@@ -789,7 +789,6 @@ function load(settings, onChange) {
         $('.dropdown-trigger').dropdown({constrainWidth: false});
         Materialize.updateTextFields();
         $('.collapsible').collapsible();
-        $('.tooltipped').tooltip();
         Materialize.Tabs.init($('.tabs'));
         $('#device-search').keyup(function (event) {
             doFilter(event.target.value.toLowerCase());
@@ -2185,7 +2184,7 @@ function genDevInfo(device) {
         if (value === undefined) {
             return '';
         } else {
-            return `<li><span class="labelinfo">${name}:</span><span>${value}</span></li>`;
+            return `<li><span class="label">${name}:</span><span>${value}</span></li>`;
         }
     };
     const genRowValues = function(name, value) {
@@ -2194,7 +2193,7 @@ function genDevInfo(device) {
         } else {
             let label = `${name}:`;
             return value.map((val) => {
-                const row = `<li><span class="labelinfo">${label}</span><span>${val}</span></li>`;
+                const row = `<li><span class="label">${label}</span><span>${val}</span></li>`;
                 label = '';
                 return row;
             }).join('');
