@@ -15,7 +15,7 @@ const originalLogMethod = debug.log;
 
 const safeJsonStringify = require('./lib/json');
 const fs = require('fs');
-const pathLib = require('path');
+const path = require('path');
 const utils = require('@iobroker/adapter-core'); // Get common adapter utils
 const SerialListPlugin = require('./lib/seriallist');
 const CommandsPlugin = require('./lib/commands');
@@ -153,7 +153,7 @@ class Zigbee extends utils.Adapter {
         // set connection false before connect to zigbee
         this.setState('info.connection', false, true);
         const zigbeeOptions = this.getZigbeeOptions();
-        this.zbController = new ZigbeeController();
+        this.zbController = new ZigbeeController(this);
         this.zbController.on('log', this.onLog.bind(this));
         this.zbController.on('ready', this.onZigbeeAdapterReady.bind(this));
         this.zbController.on('disconnect', this.onZigbeeAdapterDisconnected.bind(this));
@@ -704,9 +704,16 @@ class Zigbee extends utils.Adapter {
 
     getZigbeeOptions() {
         // file path for db
-        const dataDir = (this.systemConfig) ? this.systemConfig.dataDir : '';
-        const dbDir = pathLib.normalize(utils.controllerDir + '/' + dataDir + this.namespace.replace('.', '_'));
-        if (this.systemConfig && !fs.existsSync(dbDir)) fs.mkdirSync(dbDir);
+        let dbDir = path.join(utils.getAbsoluteInstanceDataDir(this), '');
+        dbDir = dbDir.replace('.', '_');        
+        
+        if (this.systemConfig && !fs.existsSync(dbDir)) {
+            try {
+                fs.mkdirSync(dbDir);
+            } catch (e) {
+                this.log.error(`Cannot create directory ${dbDir}: ${e}`);
+            }
+        }
         const port = this.config.port;
         if (!port) {
             this.log.error('Serial port not selected! Go to settings page.');
