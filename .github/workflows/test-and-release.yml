@@ -4,8 +4,8 @@ name: Test and Release
 # as well as tags with a semantic version
 on:
   push:
-     branches:
-      - "master"
+    branches:
+      - master
     tags:
       # normal versions
       - "v[0-9]+.[0-9]+.[0-9]+"
@@ -24,12 +24,7 @@ jobs:
     if: contains(github.event.head_commit.message, '[skip ci]') == false
 
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
-
-   
+    
     steps:
       - uses: ioBroker/testing-action-check@v1
         with:
@@ -37,18 +32,17 @@ jobs:
           # Uncomment the following line if your adapter cannot be installed using 'npm ci'
           # install-command: 'npm install'
           lint: true
-          
-  # Runs adapter tests on all supported node versions and OSes
+           
   adapter-tests:
     if: contains(github.event.head_commit.message, '[skip ci]') == false
-
-    needs: [check-and-lint]
 
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [16.x, 18.x, 20.x]
         os: [ubuntu-latest, windows-latest, macos-latest]
+          # Uncomment the following line if your adapter cannot be installed using 'npm ci'
+          # install-command: 'npm install'
 
     steps:
       - uses: ioBroker/testing-action-adapter@v1
@@ -65,6 +59,7 @@ jobs:
   # Deploys the final package to NPM
   # Deploys the final package to NPM and Github Actions
   deploy:
+    
     # Trigger this step only when a commit on master is tagged with a version number
     if: |
       contains(github.event.head_commit.message, '[skip ci]') == false &&
@@ -75,16 +70,17 @@ jobs:
     needs: [adapter-tests]
 
     runs-on: ubuntu-latest
+    
     strategy:
       matrix:
         node-version: [16.x]
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 

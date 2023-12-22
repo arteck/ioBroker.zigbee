@@ -4,7 +4,9 @@
         "node": true,
         "mocha": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended"
+    ],
     "rules": {
         "indent": [
             "error",
@@ -13,20 +15,21 @@
                 "SwitchCase": 1
             }
         ],
-        "linebreak-style": 0,
         "no-console": "off",
         "no-var": "error",
-        "prefer-const": "error",
+        "no-unused-vars": "warn",
+        "no-trailing-spaces": "error",
+        "prefer-const": "warn",        
         "quotes": [
-            "error",
-            "single",
-            {
-                "avoidEscape": true,
-                "allowTemplateLiterals": true
+            "warn",
+            "single", 
+            { 
+                "avoidEscape": true, 
+                "allowTemplateLiterals": true 
             }
         ],
         "semi": [
-            "error",
+            "warn",
             "always"
         ],
         "no-prototype-builtins": "off"
