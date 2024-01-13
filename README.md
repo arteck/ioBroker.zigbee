@@ -134,13 +134,48 @@ You can thank the authors by these links:
 -----------------------------------------------------------------------------------------------------
 
 ## Changelog
+### 1.9.7 (2024-01-05)
+* (arteck) corr configure for some devices
+
+### 1.9.6 (2024-01-01)
+* (arteck) corr ikea bug 
+* (crckmc) trv child lock works
+
+### 1.9.5 (2023-12-29)
+* (arteck) update dependency
+* (arteck) min node 18.x.
+
+### 1.9.4 (2023-12-29)
+* (arteck) typo
+
+### 1.9.3 (2023-12-26)
+* (arteck) last zhc Version 16.x
+* (arteck) corr reboot in statecontroller
+
+### 1.9.2 (2023-12-25)
+* (arteck) gen states from exposes as function
+* (arteck) rebuild dev_names.json with state cleanup button
+
+### 1.9.1 (2023-12-23)
+* (arteck) corr TypeError: Cannot read properties of undefined (reading 'state')
+
+### 1.9.0 (2023-12-22)
+* (arteck) up to new zhc
+* (arteck) update dependency
+
+### 1.8.27 (2023-12-22)
+* (arteck) update dependency
+
+### 1.8.26 (2023-12-22)
+* (arteck) corr toZigbee message
+* (arteck) add deviceManager
+
 ### 1.8.25 (2023-12-17)
 * zhc 16.x 
 * (arteck) corr group from exclude dialog
 
 ### 1.8.24 (2023-09-05)
 * (arteck) switch to exposes tab for some Aqara Devices [more infos](https://github.com/ioBroker/ioBroker.zigbee/wiki/Exposes-for-device-integration)
-
 
 ### 1.8.23 (2023-08-10)
 * (arteck) query from xiaomi is now better
@@ -167,7 +202,6 @@ You can thank the authors by these links:
 ### 1.8.16 (2023-07-11)
 * (arteck) battery corr
 
-## Changelog
 ### 1.8.15 (2023-07-11)
 * (arteck) corr battery status
 
@@ -513,7 +547,7 @@ new Zigbee-herdsman features:
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2018-2023 Kirov Ilya <kirovilya@gmail.com>
+Copyright (c) 2018-2024 Kirov Ilya <kirovilya@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

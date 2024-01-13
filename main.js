@@ -33,6 +33,7 @@ const ExcludePlugin = require('./lib/exclude');
 const zigbeeHerdsmanConverters = require('zigbee-herdsman-converters');
 const vm = require('vm');
 const util = require('util');
+const dmZigbee  = require('./lib/devicemgmt.js');
 
 const createByteArray = function (hexString) {
     const bytes = [];
@@ -73,6 +74,9 @@ class Zigbee extends utils.Adapter {
         this.stController = new StatesController(this);
         this.stController.on('log', this.onLog.bind(this));
         this.stController.on('changed', this.publishFromState.bind(this));
+
+        this.deviceManagement = new dmZigbee(this);
+
         this.plugins = [
             new SerialListPlugin(this),
             new CommandsPlugin(this),
@@ -279,7 +283,7 @@ class Zigbee extends utils.Adapter {
             try {
                 zigbeeHerdsmanConverters.addDeviceDefinition(toAdd);
             } catch {
-                this.log.error(`unable to apply external converter ${JSON.stringfy(toAdd)}`);
+                this.log.error(`unable to apply external converter ${JSON.stringify(toAdd)}`);
             }
         }
     }
@@ -547,12 +551,14 @@ class Zigbee extends utils.Adapter {
             return;
         }
 
+        meta.state = { state: '' };   // for tuya
+
         this.processConverters(converters, devId, model, mappedModel, message, meta)
-        //            .then(() => {
-        //
-        //    })
             .catch((error) => {
-                this.log.error(`Error while processing converters: '${error}'`);
+                //   'Error: Expected one of: 0, 1, got: 'undefined''
+                if (cluster !== '64529') {
+                    this.log.error(`Error while processing converters DEVICE_ID: '${devId}' cluster '${cluster}' type '${type}'`);
+                }
             });
     }
 
@@ -560,7 +566,7 @@ class Zigbee extends utils.Adapter {
         for (const converter of converters) {
             const publish = (payload) => {
                 this.log.debug(`Publish ${safeJsonStringify(payload)} to ${safeJsonStringify(devId)}`);
-                if (payload) {
+                if (typeof payload === 'object') {
                     this.publishToState(devId, model, payload);
                 }
             };
@@ -572,9 +578,9 @@ class Zigbee extends utils.Adapter {
             });
 
             const payload = await new Promise((resolve, reject) => {
-                const payload = converter.convert(mappedModel, message, publish, options, meta);
-                if (payload) {
-                    resolve(payload);
+                const payloadConv = converter.convert(mappedModel, message, publish, options, meta);
+                if (typeof payloadConv === 'object') {
+                    resolve(payloadConv);
                 }
             });
 
@@ -693,6 +699,7 @@ class Zigbee extends utils.Adapter {
 
                 const preparedValue = (stateDesc.setter) ? stateDesc.setter(value, options) : value;
                 const preparedOptions = (stateDesc.setterOpt) ? stateDesc.setterOpt(value, options) : {};
+
                 let syncStateList = [];
                 if (stateModel && stateModel.syncStates) {
                     stateModel.syncStates.forEach(syncFunct => {
@@ -727,8 +734,19 @@ class Zigbee extends utils.Adapter {
                     state: {},
                 };
 
+                // new toZigbee
+                if (preparedValue !== undefined && Object.keys(meta.message).filter(p => p.startsWith('state')).length > 0) {
+                    if (typeof preparedValue === 'number') {
+                        meta.message.state = preparedValue > 0 ? 'ON' : 'OFF';
+                    } else {
+                        meta.message.state = preparedValue;
+                    }
+                }
+
                 if (preparedOptions.hasOwnProperty('state')) {
-                    meta.state = preparedOptions.state;
+                    if (preparedOptions !== undefined) {
+                        meta.state = preparedOptions.state;
+                    }
                 }
 
                 try {
