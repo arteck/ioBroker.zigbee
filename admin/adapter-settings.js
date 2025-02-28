@@ -4,8 +4,8 @@ const parts = path.split('/');
 parts.splice(-3);
 
 const socket = io.connect('/', { path: parts.join('/') + '/socket.io' });
-var query = (window.location.search || '').replace(/^\?/, '').replace(/#.*$/, '');
-var args = {};
+const query = (window.location.search || '').replace(/^\?/, '').replace(/#.*$/, '');
+const args = {};
 let theme = null;
 
 // parse parameters
@@ -14,7 +14,7 @@ query.trim().split('&').filter(function (t) { return t.trim(); }).forEach(functi
     if (!i && parts.length === 1 && !isNaN(parseInt(b, 10))) {
         args.instance = parseInt(b, 10);
     }
-    var name = parts[0];
+    const name = parts[0];
     args[name] = parts.length === 2 ? parts[1] : true;
 
     if (name === 'instance') {
@@ -28,7 +28,7 @@ query.trim().split('&').filter(function (t) { return t.trim(); }).forEach(functi
     }
 });
 
-var instance = args.instance;
+const instance = args.instance;
 
 let common   = null; // common information of adapter
 const host     = null; // host object on which the adapter runs
@@ -55,7 +55,7 @@ $(document).ready(function () {
 function loadSystemConfig(callback) {
     socket.emit('getObject', 'system.config', function (err, res) {
         if (!err && res && res.common) {
-            systemLang   = res.common.language || systemLang;
+            systemLang   = res.common.language;
             systemConfig = res;
         }
         socket.emit('getObject', 'system.certificates', function (err, res) {
@@ -96,17 +96,13 @@ function loadSettings(callback) {
             if (typeof load === 'undefined') {
                 alert('Please implement save function in your admin/index.html');
             } else {
-		// detect, that we are now in react container (themeNames = ['dark', 'blue', 'colored', 'light'])
-		
-		const _query = query.split('&');
-		
-		for (var q = 0; q < _query.length; q++) {
-			if (_query[q].indexOf('react=') !== -1) {
-				$('.adapter-container').addClass('react-' + _query[q].substring(6));
-				theme = 'react-' + _query[q].substring(6);
-			}
+                const _query = query.split('&');
+                for (let q = 0; q < _query.length; q++) {
+                    if (_query[q].indexOf('react=') !== -1) {
+                        $('.adapter-container').addClass('react-' + _query[q].substring(6));
+                        theme = 'react-' + _query[q].substring(6);
+                    }
                 }
-
                 load(res.native, onChange);
             }
             if (typeof callback === 'function') {
@@ -118,7 +114,99 @@ function loadSettings(callback) {
             }
             alert('error loading settings for ' + _adapterInstance + '\n\n' + err);
         }
+        // Design Fix simatec
+        checkMediaQuery();
     });
+}
+
+window.addEventListener('resize', checkMediaQuery);
+
+function checkMediaQuery() {
+    const mediaQuery = window.matchMedia('(max-width: 600px)');
+
+    if (mediaQuery.matches) {
+        designFix();
+        console.log('Screen < 600px.');
+    } else {
+        console.log('Screen > 600px.');
+    }
+}
+
+// Design Fix simatec
+function designFix() {
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+
+    if (!dropdownToggle) {
+        const cols = document.querySelectorAll('.col:not(.tab)');
+        const sClasses = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11'];
+
+        cols.forEach(col => {
+            sClasses.forEach(sClass => {
+                if (col.classList.contains(sClass)) {
+                    col.classList.remove(sClass);
+                }
+            });
+
+            col.classList.add('s12');
+        });
+
+        const logo = document.querySelector('.logo');
+
+        if (logo) {
+            const col = logo.closest('.col');
+            if (col) {
+                const sClasses = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11', 's12', 'm2', 'm4', 'm8', 'm10', 'm12', 'l2', 'l4', 'l8', 'l10', 'l12',];
+                sClasses.forEach(sClass => {
+                    if (col.classList.contains(sClass)) {
+                        col.classList.remove(sClass);
+                    }
+                });
+                col.classList.add('s10');
+                col.classList.add('m6');
+                col.classList.add('l6');
+            }
+        }
+
+        const allTabs = document.querySelectorAll('.tabs');
+
+        allTabs.forEach(function (tabs) {
+            const dropdownToggle = document.createElement('div');
+            dropdownToggle.classList.add('dropdown-toggle');
+
+            const icon = document.createElement('i');
+            icon.classList.add('material-icons');
+            icon.textContent = 'menu';
+            dropdownToggle.appendChild(icon);
+
+            tabs.insertAdjacentElement('beforebegin', dropdownToggle);
+
+            const dropdownMenu = document.createElement('div');
+            dropdownMenu.classList.add('dropdown-menu');
+
+            const tabLinks = tabs.querySelectorAll('li a');
+
+            tabLinks.forEach(function (tab) {
+                const dropdownLink = document.createElement('a');
+                dropdownLink.href = tab.getAttribute('href');
+                dropdownLink.textContent = tab.textContent;
+                dropdownMenu.appendChild(dropdownLink);
+                dropdownLink.addEventListener('click', function () {
+                    tab.click();
+                    dropdownMenu.classList.remove('show');
+                });
+            });
+
+            tabs.insertAdjacentElement('beforebegin', dropdownMenu);
+
+            dropdownToggle.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('show');
+            });
+
+            const rect = dropdownToggle.getBoundingClientRect();
+            dropdownMenu.style.top = `${rect.bottom}px`;
+            dropdownMenu.style.right = '10px';
+        });
+    }
 }
 
 function prepareTooltips() {
@@ -156,7 +244,7 @@ function prepareTooltips() {
                     link = 'https://github.com/ioBroker/ioBroker.' + common.name + '#' + id;
                 }
             }
-            if (!link.match('^https?:\/\/')) {
+            if (!link.match('^https?:\/\/')) { //eslint-disable-line no-useless-escape
                 if (common.readme) {
                     link = common.readme + '#' + link;
                 } else {
@@ -211,9 +299,8 @@ function onChange(isChanged) {
 }
 
 function showMessage(message, title, icon) {
-    var $dialogMessage;
     // noinspection JSJQueryEfficiency
-    $dialogMessage = $('#dialog-message');
+    let $dialogMessage = $('#dialog-message');
     if (!$dialogMessage.length) {
         $('body').append(
             '<div class="m"><div id="dialog-message" class="modal modal-fixed-footer">' +

@@ -1,98 +1,85 @@
 {
   "common": {
     "name": "zigbee",
-    "version": "1.9.7",
+    "version": "2.0.1",
     "news": {
-      "1.9.7": {
-        "en": "corr configure for some devices",
-        "de": "corr konfigurieren für einige geräte",
-        "ru": "для некоторых устройств",
-        "pt": "corr configurar para alguns dispositivos",
-        "nl": "corr instellen voor sommige apparaten",
-        "fr": "corr configure pour certains appareils",
-        "it": "corr configurare per alcuni dispositivi",
-        "es": "configuración de corr para algunos dispositivos",
-        "pl": "configure corr dla niektórych urządzeń",
-        "uk": "налаштовувати корр для деяких пристроїв",
-        "zh-cn": "一些设备的corr配置"
+      "2.0.1": {
+        "en": "BREAKING CHANGES\n\nswitch to converters 21 changes the exposes for a large numbern of devices (mostly remotes)\nnew method for controlling color based on subchannels for rgb, hs and xy\nExposes as default for ALL devices. Use of old definition as option only\nRequires Node 20.x or newer\n\nFix Pairing\nchange ping\ndelay map generation until refresh is activated, map messages after generation\nremove bindings tab from zigbee tab\nreorder tabs in configuration\nremove binding tab from configuration\nremove map from configuration\nadd debug to zigbee tab\nHerdsman 3.2.5, Converters 21.30.0\nExposes as default, use of old device definitions as legacy optional\nUser specific images (model based, device based)\nImproved group editing - remove members from group card",
+        "de": "VERÄNDERUNGEN\n\nschalter auf konverter 21 ändert die belichtung für eine große anzahl von geräten (meist fernbedienungen)\nneue methode zur farbsteuerung auf basis von subkanälen für rgb, hs und xy\nExposes als Standard für ALL Geräte. Verwendung der alten Definition nur als Option\nErfordert Node 20.x oder neuer\n\nFeste Paarung\nänderung ping\nverzögerung der kartenerzeugung, bis das update aktiviert ist, kartennachrichten nach generation\nbinden tab aus zickbee tab entfernen\nreorder tabs in konfiguration\nbindelasche aus der konfiguration entfernen\nkarte aus der konfiguration entfernen\ndebug to zigbee tab hinzufügen\nHerdsman 3.2.5, Konverter 21.30.0\nExposes als Standard, Verwendung von alten Gerätedefinitionen als Vermächtnis optional\nBenutzerspezifische Bilder (modellbasierte, gerätebasierte)\nVerbesserte Gruppenbearbeitung - Mitglieder aus Gruppenkarte entfernen",
+        "ru": "ПЕРЕМЕНЫ ДЫХАНИЯ\n\nпереход на преобразователи 21 изменяет экспозиции для большого количества устройств (в основном пультов)\nновый метод управления цветом на основе подканалов для rgb, hs и xy\nВыставляется по умолчанию для всех устройств. Использование старого определения только в качестве варианта\nТребуется Node 20.x или новый\n\nФиксация пар\nизменить пинг\nзадержка генерации карт до активации обновления, сообщения карт после генерации\nудалить вкладку связывания из вкладки zigbee\nзакладки переупорядочения в конфигурации\nудалить вкладку связывания из конфигурации\nудалить карту из конфигурации\nдобавить отладку в zigbee tab\nСтадовод 3.2.5, Преобразователи 21.30.0\nОбъявления по умолчанию, использование старых определений устройств в качестве устаревших опций\nПользовательские изображения (на основе модели, устройства)\nУлучшенное редактирование группы - удаление членов с карты группы",
+        "pt": "ALTERAÇÕES DE TRABALHO\n\nmudar para conversores 21 altera as exposiçãμes para um grande nãomero de dispositivos (principalmente remotos)\nnovo método para controlar a cor com base em subcanais para rgb, hs e xy\nExpõe como padrão para todos os dispositivos. Uso da definição antiga como opção apenas\nRequer nó 20.x ou mais recente\n\nEmparelhamento fixo\nmudança de ping\ngeração de mapas de atraso até que a atualização seja ativada, mapeie mensagens após a geração\nremover encadernações guia da aba zigbee\nreordenar as abas na configuração\nremover guia de ligação da configuração\nremover mapa da configuração\nadd debug to ziigbee tab\nHerdsman 3.2.5, Conversores 21.30.0\nExpõe como padrão, uso de definições de dispositivos antigos como legado opcional\nImagens específicas do usuário (modelo baseado, dispositivo baseado)\nEdição de grupo melhorada - remover membros do cartão de grupo",
+        "nl": "BEREIDINGSVERANDERINGEN\n\nswitch to converters 21 verandert de expos voor een groot aantal apparaten (meestal afstandsbedieningen)\nnieuwe methode voor het controleren van kleur op basis van subkanalen voor rgb, hs en xy\nExposeert als standaard voor ALLE apparaten. Gebruik van oude definitie als optie\nVereist Node 20.x of nieuwer\n\nRepareren\nverandering ping\nde mapgeneratie uitstellen tot het vernieuwen is geactiveerd, berichten na generatie in kaart brengen\ntabblad bindingen verwijderen uit zigbee-tabblad\ntabbladen opnieuw ordenen in configuratie\ntabblad binding verwijderen uit configuratie\nkaart uit configuratie verwijderen\ndebug toevoegen aan zigbee-tabblad\nHerdsman 3.2.5, Converters 21.30.0\nExposeert als standaard, gebruik van oude apparaatdefinities als optioneel legacy\nGebruikersspecifieke afbeeldingen (op basis van model, apparaat)\nVerbeterde groepsbewerking - leden verwijderen van groepskaart",
+        "fr": "CHANGEMENTS\n\nbasculer vers les convertisseurs 21 modifie les expositions pour un grand nombre de dispositifs (principalement des télécommandes)\nnouvelle méthode pour contrôler la couleur basée sur les sous-canaux pour rgb, hs et xy\nExposes par défaut pour TOUS les appareils. Utilisation de l'ancienne définition comme option seulement\nNécessite le Node 20.x ou plus récents\n\nCorrection de l'appariement\nchangement ping\nretarder la génération de la carte jusqu'à ce que le rafraîchissement soit activé, map messages after generation\nsupprimer l'onglet reliures de l'onglet zigbee\nréorganiser les onglets dans la configuration\nsupprimer l'onglet de liaison de la configuration\nsupprimer la carte de la configuration\najouter debug à l'onglet zigbee\nHerdsman 3.2.5, Convertisseurs 21.30.0\nExposes comme par défaut, utilisation des anciennes définitions d'appareils comme legs optionnel\nImages spécifiques à l'utilisateur (sur modèle, sur périphérique)\nAmélioration de l'édition de groupe - supprimer les membres de la carte de groupe",
+        "it": "VARIAZIONI\n\ncommutazione a convertitori 21 cambia l'esposizione per un gran numero di dispositivi (per lo più remoti)\nnuovo metodo per il controllo del colore basato su sottocanali per rgb, hs e xy\nMostra come predefinito per tutti i dispositivi. Uso della vecchia definizione come opzione solo\nRichiede Node 20.x o nuovo\n\nFissare l'accoppiamento\ncambiamento ping\nritardare la generazione della mappa fino all'attivazione del aggiornamento, mappare i messaggi dopo generazione\nrimuovere la scheda binding dalla scheda zigbee\nriordinare le schede nella configurazione\nrimuovere la scheda di binding dalla configurazione\nrimuovere la mappa dalla configurazione\naggiungere debug a zigbee scheda\nHerdsman 3.2.5, Convertitori 21.30.0\nEsposizioni come predefinito, uso di vecchie definizioni del dispositivo come legacy opzionale\nImmagini specifiche dell'utente (modello basato, dispositivo basato)\nModifica del gruppo migliorato - rimuovere i membri dalla scheda di gruppo",
+        "es": "BREAKING CHANGS\n\ninterruptor a convertidores 21 cambios de los expuestos para un gran número de dispositivos (en su mayoría remotos)\nnuevo método para controlar el color basado en subcanales para rgb, hs y xy\nExposes como predeterminado para TODOS los dispositivos. Uso de la vieja definición como opción solamente\nRequiere Nodo 20.x o más nuevos\n\nPareja fija\ncambio de ping\nretraso de la generación del mapa hasta que se activa el refresco, mapa mensajes después de la generación\neliminar la ficha de unión de la pestaña zigbee\npestañas reordenadas en configuración\neliminar la pestaña de unión de configuración\neliminar mapa de la configuración\nañadir debug a la pestaña zigbee\nHerdsman 3.2.5, convertidores 21.30.0\nExposes as default, use of old device definitions as legacy Optional\nImágenes específicas del usuario (con base de modelo, basadas en dispositivos)\nMejor edición de grupo - eliminar miembros de la tarjeta de grupo",
+        "pl": "ZMIANY ZBIORCZE\n\nprzełączanie na konwertery 21 zmienia eksponaty dużej liczby urządzeń (głównie pilotów)\nnowa metoda kontrolowania koloru na podstawie podkanałów dla rgb, hs i xy\nWyświetla jako domyślne dla urządzeń ALL. Używanie starej definicji jako opcji\nWymaga węzła 20.x lub nowsze\n\nNapraw parowanie\nzmienić ping\nopóźnianie generowania mapy aż do uruchomienia odświeżania, wiadomości mapy po generacji\nusunąć zakładkę wiązania z zakładki zigbee\nponownie zamówić karty w konfiguracji\nusunąć zakładkę wiązania z konfiguracji\nusuń mapę z konfiguracji\ndodaj debug do karty zigbee\nHerdsman 3.2.5, Konwertery 21.30.0\nWyświetla jako domyślne, użycie starych definicji urządzenia jako dotychczasowe opcjonalne\nObrazy specyficzne dla użytkownika (oparte na modelu, na urządzeniu)\nUlepszona edycja grupowa - usunąć członków z karty grupowej",
+        "uk": "БРЕАКІНГОВІ ЗМІНИ\n\nперемикач на перетворювачі 21 змінює висадки для великої кількості пристроїв (найбільш віддалені)\nновий метод контролю кольору на основі підканалів для rgb, hs і xy\nЗа замовчуванням для всіх пристроїв. Використання старого визначення як варіант\nВимагає Node 20.x або нові\n\nФіксація Пірсинг\nзмінити пінг\nгенерація карти затримки до освіження активується, повідомлення після генерації\nвидалити вкладку в'язання з вкладки zigbee\nвкладка зворотного замовлення в конфігурації\nвидалити вкладку з конфігурації\nвидалити карту з конфігурації\nadd debug до zigbee tab\nEnglish, Українська, Français..\nЕкспози як за замовчуванням, використання застарілих параметрів пристрою, як необов'язковий\nКористувальницькі специфічні зображення (моделі на основі пристрою)\nУдосконалено редагування груп - видалення членів з групової картки",
+        "zh-cn": "裂变\n\n21 更改大量设备(大多为远程设备)的曝光量\n基于 rgb、 hs 和 xy 子通道的新的颜色控制方法\n曝光为默认所有设备 。 仅将旧定义用作选项\n需要节点 20.x 或更新\n\n修复对齐\n更改键\n将映射生成延迟到刷新启动, 映射消息生成后\n从 zigbee 标签中删除绑定标签\n在配置中重新排序标签\n从配置中删除绑定标签\n从配置中删除地图\n添加调试到 zigbee 标签\n牧民 3.2.5,转换器 21.30.0\n将曝光作为默认, 将旧设备定义作为遗留选项\n用户特定图像( 基于模型、 设备)\n改进组编辑 - 从组卡中删除成员"
       },
-      "1.9.6": {
-        "en": "corr ikea bug \ntrv child lock works",
-        "de": "corr ikea bug\nkinderschlösser funktioniert",
-        "ru": "корр ikea баг\ntrv детские замки работает",
-        "pt": "corr ikea bug\ntrabalhos de bloqueio de crianças",
-        "nl": "_\nhet kinderslot werkt",
-        "fr": "corr ikea bug\nverrouillage enfant trv fonctionne",
-        "it": "corr ikea bug\ntrv bambino serratura lavori",
-        "es": "corr ikea bug\ntrv niño cerradura funciona",
-        "pl": "kor ikea bug\npracuje w trv childlock",
-        "uk": "ikea помилка\ntrv дитячих замків",
-        "zh-cn": "绑架\n童 工"
+      "1.11.2": {
+        "en": "debug for states",
+        "de": "debug for states",
+        "ru": "debug for states",
+        "pt": "debug for states",
+        "nl": "debug for states",
+        "fr": "debug for states",
+        "it": "debug for states",
+        "es": "debug for states",
+        "pl": "debug for states",
+        "uk": "debug for states",
+        "zh-cn": "debug for states"
       },
-      "1.9.5": {
-        "en": "update dependency\nmin node 18.x.",
-        "de": "aktualisierung abhängigkeit\nmin node 18.x.",
-        "ru": "обновление зависимости\nмин. нода 18.x.",
-        "pt": "dependência de atualização\nmin node 18.x.",
-        "nl": "vertaling:\n_.",
-        "fr": "mettre à jour la dépendance\nmin node 18.x.",
-        "it": "dipendenza da aggiornamento\nmin nodo 18.x.",
-        "es": "actualización de la dependencia\nmin node 18.x.",
-        "pl": "zależności\nwęzeł 18.x.",
-        "uk": "оновлення залежності\nхв вузол 18.x.",
-        "zh-cn": "更新\n第18.x条."
+      "1.10.14": {
+        "en": "Herdsman 2.1.9, Converters 20.58.0\nFix: Aqara T1M (CL-L02D) \ndeleteDeviceStates change to deleteObj",
+        "de": "Herdsman 2.1.9, Konverter 20.58.0\nFix: Aqara T1M (CL-L02D)\nlöschen DeviceState Änderung zum Löschen Ob",
+        "ru": "Herdsman 2.1.9, Converters 20.58.0\nFix: Aqara T1M (CL-L02D)\nудалить Устройства меняются для удаления Obj",
+        "pt": "Herdsman 2.1.9, Conversores 20.58.0\nFix: Aqara T1M (CL-L02D)\nexcluir DeviceStates mudam para excluir Objecção",
+        "nl": "Herdsman 2.1.9, Converters 20.58.0\nFix: Aqara T1M (CL-L02D)\nverwijderen Apparaatstaten wijzigen om te verwijderen Obj",
+        "fr": "Herdsman 2.1.9, Convertisseurs 20.58.0\nCorrection: Aqara T1M (CL-L02D)\nsupprimer Les états de périphérique changent pour supprimer OBJ",
+        "it": "Herdsman 2.1.9, Convertitori 20.58.0\nFisso: Aqara T1M (CL-L02D)\ncancella DeviceStates modifica per eliminare Obj",
+        "es": "Herdsman 2.1.9, convertidores 20.58.0\nFijación: Aqara T1M (CL-L02D)\nborrar Los Estados de dispositivos cambian para eliminar Obj",
+        "pl": "Herdsman 2.1.9, konwertery 20.58.0\nFix: Aqara T1M (CL- L02D)\nusuń DeviceStates zmienić, aby usunąć Obj",
+        "uk": "Herdsman 2.1.9, Конвертер 20.58.0\nФіксація: Aqara T1M (CL-L02D)\nвидалити Зміна стану пристроїв для видалення Офіціант",
+        "zh-cn": "牧民2.1.9,转换器 20.58.0\n修补:Aqara T1M(CL-L02D)\n删除 设备状态更改以删除 欧比"
       },
-      "1.9.4": {
-        "en": "typo",
-        "de": "typo",
-        "ru": "тип",
-        "pt": "tipo",
-        "nl": "type",
-        "fr": "type",
-        "it": "tipo",
-        "es": "tipo",
-        "pl": "typ",
-        "uk": "тип",
-        "zh-cn": "类型"
+      "1.10.13": {
+        "en": "corr icon download bug (axios)",
+        "de": "corr icon download bug (axios)",
+        "ru": "значок скачать bug (axios)",
+        "pt": "corr ícone de download bug (eixos)",
+        "nl": "corr pictogram download bug (axios)",
+        "fr": "corr icône de téléchargement bug (axios)",
+        "it": "corr icon download bug (assios)",
+        "es": "corr icono descargar bug (axios)",
+        "pl": "corr ikona pobierz błąd (axios)",
+        "uk": "корр іконки завантажити помилку (axios)",
+        "zh-cn": "corr 图标下载错误( axios)"
       },
-      "1.9.3": {
-        "en": "last zhc Version 16.x\ncorr reboot in statecontroller",
-        "de": "letzte Version 16.x\nkorr reboot in statecontroller",
-        "ru": "последняя версия zhc 16.x\nкорр перезагрузка в государственный контролер",
-        "pt": "última versão zhc 16.x\nreboot de corr no controlador de estado",
-        "nl": "laatste Zhc Version 16\ncorr reboot in staatscontroller",
-        "fr": "dernière version zhc 16.x\ncorr reboot in statecontroller",
-        "it": "ultima versione zhc 16.x\nreboot corr in statocontroller",
-        "es": "última versión 16.x\nreboot de corr en statecontroller",
-        "pl": "ostatnia wersja 16.x\nkor reboot w systemie kontroli państwa",
-        "uk": "остання версія jc 16.x\nперезавантаження коренів в держконтролері",
-        "zh-cn": "上一次zhc Version 16x\n州控制容忍的报复"
+      "1.10.12": {
+        "en": "corr Channel Scan",
+        "de": "corr Channel Scan",
+        "ru": "корректор канала",
+        "pt": "escaneamento do canal de cortiça",
+        "nl": "corr kanaalscan",
+        "fr": "balayage du canal corr",
+        "it": "corr Channel Scansione",
+        "es": "corr Channel Scan",
+        "pl": "corr Channel Scan",
+        "uk": "сканування каналу",
+        "zh-cn": "频道扫描"
       },
-      "1.9.2": {
-        "en": "gen states from exposes as function\nrebuild dev_names.json with state cleanup button",
-        "de": "gen-staaten von exponiert als funktion\ndev_names neu aufbauen. json with state cleanup taste",
-        "ru": "гены из экспозиций как функция\nперестроить dev_names. json с государственной кнопкой очистки",
-        "pt": "gen estados de exposições como função\nreconstruir dev_names. json com botão de limpeza do estado",
-        "nl": "gen staten van blootstelling als functioneren\nherbouwde dev namen. json met staatsopruimknop",
-        "fr": "gen states from exposes as function\nreconstruire dev_names. json avec bouton de nettoyage de l'état",
-        "it": "gen stati da espone come funzione\nricostruire dev_names. json con il pulsante di pulizia dello stato",
-        "es": "gen estados de expone como función\nreconstruir dev_names. json con botón de limpieza del estado",
-        "pl": "państwa genowe zjawiają się jako funkcje\nodbudowa nazw. json z przyciskiem czystego przycisku",
-        "uk": "генні стани від вибухів як функції\nrebuild dev_names. json з державною кнопкою очищення",
-        "zh-cn": "根塔里斯·奥古尔(签名)\n页:1 j. 有国家清洁,但顿"
-      },
-      "1.9.1": {
-        "en": "corr TypeError: Cannot read properties of undefined (reading 'state')",
-        "de": "korpustyp Fehler: Kann Eigenschaften von undefinierten (Lesezustand) nicht lesen",
-        "ru": "тип корр Ошибка: Не смогите прочитать свойства неопределенного (читая состояние)",
-        "pt": "tipo de corante Erro: Não pode ler propriedades de indefinido (estado de leitura)",
-        "nl": "_ Kan geen eigendommen lezen van onbepaalde staat",
-        "fr": "type Erreur: Impossible de lire les propriétés indéfinies (état de lecture)",
-        "it": "tipo Errore: non può leggere le proprietà di non definito (stato di lettura)",
-        "es": "tipo de corrido Error: No se pueden leer propiedades de estado indefinido (estado de lectura)",
-        "pl": "kor Type Error: Cannot przeczytał właściwości nieokreślone (czytać stan)",
-        "uk": "тип кореня Помилка: Не можна прочитати властивості невизнаного (прочитаного стану)",
-        "zh-cn": "类型 Error: Cannot宣读了未界定的(国名)财产"
+      "1.10.11": {
+        "en": "BREAKING CHANGE\n\nbugs : ChannelScan is currently not available\n\n\nfix linter errors\ndisable map display for deactivated devices\nnew option on map: disable physics interaction\nnew zigbee-herdsman-converters 20.28.0\nnew zigbee-herdsman 2.1.1\nAllow use of keyless converters (used for TuYa and compatible devices in zigbee-herdsman-converters\nswap from request to axios\ndelete groups works again",
+        "de": "VERWENDUNGSBEREICH\n\nbugs : ChannelScan ist derzeit nicht verfügbar\n\n\nlinterfehler beheben\nkartenanzeige für deaktivierte geräte deaktivieren\nneue option auf der karte: physik-interaktion deaktivieren\nneue zickbee-herdsman-konverter 20.28.0\nneuer zickbee-herdsman 2.1.1\nVerwenden von schlüssellosen Wandlern (für TuYa und kompatible Geräte in Zickbee-herdsman-Konverter verwendet)\nswap von anfrage an axios\nlöschen von gruppen funktioniert wieder",
+        "ru": "ОБМЕН\n\nжуки: ChannelScan в настоящее время не доступен\n\n\nисправление ошибок\nотключить отображение карты для деактивированных устройств\nновый вариант на карте: отключить взаимодействие физики\n20.28.0\n2.1.1\nПозволить использовать бесключевые конвертеры (используемые для TuYa и совместимые устройства в zigbee-herdsman-конвертерах\nсвопа от запроса к axios\nудалить группы снова",
+        "pt": "ALTERAÇÕES DE TRABALHO\n\nbugs : ChannelScan não está disponível\n\n\ncorrigir erros do linter\ndesativar a exibição do mapa para dispositivos desativados\nnova opção no mapa: desativar a interação física\nnovos conversores de zigbee-herdsman 20.28.0\nnovo zigbee-herdsman 2.1.1\nPermitir o uso de conversores sem chave (usado para TuYa e dispositivos compatíveis em conversores de zigbee-herdsman\nswap de pedido para axios\nexcluir grupos funciona novamente",
+        "nl": "BREAKING VERANDERING\n\nbugs: ChannelScan is momenteel niet beschikbaar\n\n\nrepareren linter fouten\nkaartweergave voor gedeactiveerde apparaten uitschakelen\nnieuwe optie op de kaart: interactie natuurkunde uitschakelen\nnieuwe zigbee-herdsman-converters 20.28.0\nnieuwe zigbee-herdsman 2.1.1\nGebruik van sleutelloze converters toestaan (gebruikt voor TuYa en compatibele apparaten in zigbee-herdsman-converters\nruil van verzoek naar axios\ngroepen opnieuw verwijderen",
+        "fr": "CHANGEMENT DE BREAING\n\nbugs : ChannelScan n'est actuellement pas disponible\n\n\ncorrection des erreurs linter\ndésactiver l'affichage de la carte pour les appareils désactivés\nnouvelle option sur la carte: désactiver l'interaction physique\nnouveaux convertisseurs zigbee-herdsman 20.28.0\nnouveau zigbee-herdsman 2.1.1\nPermettre l'utilisation de convertisseurs sans clé (utilisés pour TuYa et appareils compatibles dans les convertisseurs zigbee-herdsman-converters\néchange de la demande à l'axios\nsupprimer les groupes fonctionne à nouveau",
+        "it": "CAPITOLO DI RICERCA\n\nbugs: ChannelScan non è attualmente disponibile\n\n\ncorreggere gli errori di linter\ndisabilitare la visualizzazione della mappa per i dispositivi disattivati\nnuova opzione sulla mappa: disabilitare l'interazione fisica\nnuovo zigbee-herdsman-converters 20.28.0\nnuovo zigbee-herdsman 2.1.1\nConsentire l'uso di convertitori senza chiave (utilizzati per TuYa e dispositivi compatibili in zigbee-herdsman-converter\nswap da richiesta a assios\ncancellare i gruppi funziona di nuovo",
+        "es": "BREAKING CHANGE\n\nbugs : ChannelScan actualmente no está disponible\n\n\ncorrige errores de invierno\npantalla de mapa deshabilitado para dispositivos desactivados\nnueva opción en el mapa: la interacción física deshabilitada\nnuevos zigbee-herdsman-converters 20.28.0\nnuevo zigbee-herdsman 2.1.1\nPermitir el uso de convertidores sin llave (utilizados para TuYa y dispositivos compatibles en zigbee-herdsman-converters\nswap from request to axios\neliminar grupos funciona de nuevo",
+        "pl": "ZMIANA ZBIORCZA\n\nbłędy: ChannelScan jest obecnie niedostępny\n\n\nnaprawić błędy lintera\nwyłączyć wyświetlacz mapy dla wyłączonych urządzeń\nnowa opcja na mapie: wyłączenie interakcji fizyki\nnowe konwertery zigbee- herdsman- 20.28.0\nnowy zigbee-herdsman 2.1.1\nZezwalaj na stosowanie konwerterów bezklawiszowych (używanych dla TuYa i kompatybilnych urządzeń w konwerterach zigbee- herdsman-\nzamiana z wniosku na aksjos\nusuń grupy działa ponownie",
+        "uk": "БРЕАКІНГ ЗМІН\n\nпомилки : CanalScan наразі немає\n\n\nвиправлено помилки linter\nвідключення відображення карти для деактивованих пристроїв\nновий варіант на карті: відключена фізика взаємодія\nнові zigbee-herdsman-converters 20.28.0\nновий zigbee-herdsman 2.1.1\nДозволити використання без ключів конвертерів (використовується для TuYa та сумісних пристроїв в zigbee-herdsman-converters\nковтання від запиту в осях\nвидалити групи знову",
+        "zh-cn": "破坏变化\n\n错误 : 频道扫描目前不可用\n\n\n修正线性错误\n禁用已停用设备的地图显示\n地图上的新选项: 禁用物理交互\n新齐格比-牧民-转换器 20.28.0\n新齐格比牧民 2.1.1\n允许使用无密钥转换器( 用于 TuYa 和 Zigbee- herdsman- 转换器中的兼容设备)\n从请求转换为轴\n再次删除组工作"
       }
     },
     "titleLang": {
@@ -121,10 +108,17 @@
       "pl": "Adapter Zigbee do urządzeń Xiaomi (i innych) za pośrednictwem Chip cc26xx/cc25xx",
       "zh-cn": "适用于小米（和其他）设备的Zigbee适配器，通过Chip cc26xx/cc25xx"
     },
+    "docs": {
+      "en": "docs/en/readme.md",
+      "de": "docs/en/readme.md"
+    },
     "authors": [
       "Kirov Ilya<kirovilya@gmail.com>"
     ],
-    "license": "MIT",
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
     "platform": "Javascript/Node.js",
     "mode": "daemon",
     "icon": "zigbee.png",
@@ -144,15 +138,17 @@
     "readme": "https://github.com/ioBroker/ioBroker.zigbee/blob/master/README.md",
     "loglevel": "info",
     "type": "hardware",
-    "materialize": true,
     "supportedMessages": {
       "deviceManager": true
+    },
+    "adminUI": {
+      "config": "materialize",
+      "tab": "materialize"
     },
     "messagebox": true,
     "stopBeforeUpdate": true,
     "dataFolder": "zigbee_%INSTANCE%",
     "compact": true,
-    "materializeTab": true,
     "connectionType": "local",
     "dataSource": "push",
     "tier": 2,
@@ -183,7 +179,7 @@
     ],
     "dependencies": [
       {
-        "js-controller": ">=3.3.0"
+        "js-controller": ">=5.0.19"
       }
     ],
     "messages": [
@@ -191,8 +187,8 @@
         "condition": {
           "operand": "and",
           "rules": [
-            "oldVersion<=1.8.22",
-            "newVersion>=1.8.24"
+            "oldVersion<=1.10.14",
+            "newVersion>=2.0.0"
           ]
         },
         "title": {
@@ -208,16 +204,17 @@
           "zh-cn": "重要通知!"
         },
         "text": {
-          "en": "This new version use exposes for Aqara Button WXKG01LM. Plz select this device into exposes/Auschliessen tab",
-          "ru": "Эта новая версия использует экспозиции для Aqara Button WXKG01LM. Пожалуйста, выберите это устройство в exposes/Auschliessen tab",
-          "pt": "Esta nova versão usa expões para Aqara Button WXKG01LM. Por favor, selecione este dispositivo no separador exposes/Auschliessen",
-          "nl": "Deze nieuwe versie gebruikt blootstellingen voor Aqara Button WXK01LM. Kies alsjeblieft dit apparaat uit in de openbare aanklagers",
-          "fr": "Cette nouvelle version utilise pour Aqara Button WXKG01LM. Veuillez sélectionner cet appareil dans l'onglet Affichage/Auschliessen",
-          "it": "Questa nuova versione utilizza per Aqara Button WXKG01LM. Si prega di selezionare questo dispositivo per exposes/Auschliessen scheda",
-          "es": "Este nuevo uso expone para Aqara Button WXKG01LM. Por favor, seleccione este dispositivo en la pestaña exposes/Auschliessen",
-          "pl": "Nowa wersja została udostępniona dla zmian Aqary Button WXKG01LM. Prosze dodać to do exposes/Auschliessen tabsena",
-          "uk": "Ця нова версія використовується для кнопки Aqara Button WXKG01LM. Будь ласка, оберіть цей пристрій у вкладці ",
-          "zh-cn": "这一新版本用于Aqara Button WXKG01LM。 请选择这一装置暴露/Auschliessen tab"
+          "en": "\"BREAKING CHANGE. <br> switch to converters 21 changes the exposes for a large numbern of devices (mostly remotes) <br> new method for controlling color based on subchannels for rgb, hs and xy <br> Exposes as default for ALL devices. Use of old definition as option only",
+          "de": "\"BREAKING CHANGE. <br> Umstellung auf Konverter 21 ändert die Einstellungen für eine große Anzahl von Geräten (vor allem Fernbedienungen) <br> neue Methode zur Steuerung der Farbe basierend auf rgb, hs und xy <br> Exposes als Standard für ALLE Geräte. die alte Definition ist jetzt nur optional",
+          "ru": "\"BREAKING CHANGE. <br> Переход на конвертеры 21 изменяет экспозиции для большого количества устройств (в основном пультов) <br> Новый метод управления цветом, основанный на подканалах для rgb, hs и xy <br> Экспонирует по умолчанию для ВСЕХ устройств. Использование старого определения только в качестве опции",
+          "pt": "\"BREAKING CHANGE. <br> mudança para conversores 21 altera a exposição de um grande número de dispositivos (principalmente controles remotos) <br> novo método para controlar cores baseado em subcanais para rgb, hs e xy <br> expõe como padrão para TODOS os dispositivos. Utilização da definição antiga apenas como opção",
+          "nl": "\"BREAKING CHANGE. <br> overschakelen naar converters 21 verandert de instellingen voor een groot aantal apparaten (vooral afstandsbedieningen) <br> nieuwe methode voor het regelen van kleur op basis van subkanalen voor rgb, hs en xy <br> Standaardinstellingen voor ALLE apparaten. Gebruik van oude definitie alleen als optie",
+          "fr": "\"BREAKING CHANGE. <br> le passage aux convertisseurs 21 modifie l'exposition pour un grand nombre d'appareils (principalement les télécommandes) <br>nouvelle méthode pour contrôler la couleur basée sur les sous-canaux pour rgb, hs et xy <br>Expose par défaut pour TOUS les appareils. Utilisation de l'ancienne définition comme option seulement",
+          "it": "\"BREAKING CHANGE. <br> il passaggio ai convertitori 21 modifica le esposizioni per un gran numero di dispositivi (soprattutto telecomandi) <br> nuovo metodo per il controllo del colore basato su sottocanali per rgb, hs e xy <br> Espone come predefinito per TUTTI i dispositivi. Uso della vecchia definizione solo come opzione",
+          "es": "\"BREAKING CHANGE. <br> cambiar a convertidores 21 cambia las exposiciones para un gran númeron de dispositivos (principalmente mandos a distancia) <br> nuevo método para controlar el color basado en subcanales para rgb, hs y xy <br> Expone por defecto para TODOS los dispositivos. Uso de la antigua definición sólo como opción",
+          "pl": "\"BREAKING CHANGE. <br> przejście na konwertery 21 zmienia ekspozycje dla dużej liczby urządzeń (głównie pilotów) <br> nowa metoda sterowania kolorem w oparciu o podkanały dla rgb, hs i xy <br> Ekspozycje domyślnie dla WSZYSTKICH urządzeń. Użycie starej definicji tylko jako opcji",
+          "uk": "\"BREAKING CHANGE. <br> перехід на конвертери 21 змінює експозиції для великої кількості пристроїв (переважно пультів) <br> новий метод керування кольором на основі підканалів для rgb, hs та xy <br> Експозиції за замовчуванням для ВСІХ пристроїв. Використання старого визначення лише як опція",
+          "zh-cn": "\"BREAKING CHANGE. <br> 切换到转换器 21 会改变大量设备（主要是遥控器）的显示<br>基于 rgb、hs 和 xy 子通道控制颜色的新方法<br>对所有设备显示为默认设置。仅使用旧定义作为选项"
         },
         "link": "https://github.com/ioBroker/ioBroker.zigbee/blob/master/README.md",
         "level": "warn",
@@ -238,7 +235,8 @@
           "cancel"
         ]
       }
-    ]
+    ],
+    "installedFrom": "asgothian/ioBroker.zigbee#1.11"
   },
   "native": {
     "port": "",
@@ -254,7 +252,9 @@
     "disableBackup": false,
     "external": "",
     "startWithInconsistent": false,
-    "warnOnDeviceAnnouncement": true
+    "warnOnDeviceAnnouncement": true,
+    "baudRate": 115200,
+    "flowCTRL": false
   },
   "instanceObjects": [
     {

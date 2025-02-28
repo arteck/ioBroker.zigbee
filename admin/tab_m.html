@@ -79,6 +79,7 @@
     .m .zlogo {
         padding: 0.5rem;
         width: 64px;
+        margin-right: 10px;
     }
     .input-group {
         display: table;
@@ -406,6 +407,242 @@
     .m.react-dark .switch label .lever:after {
         background-color: #436a93;
     }
+
+    .m .tabs .tab a.active {
+        color: #fff !important;
+        border-bottom: 2px solid #fff !important;
+    }
+
+    .m .navbar-fixed nav {
+        position: fixed;
+        z-index: 200;
+    }
+
+    #tabs {
+        margin-top: 0;
+    }
+
+    .m .page {
+        margin-top: 7.0rem;
+    }
+
+    #sett {
+        margin-top: 40px;
+    }
+
+    .m .row .col.offset-s11 {
+        margin-left: 15px;
+    }
+
+    #tab-main .navbar-fixed #nav-mobile {
+        position: fixed;
+        z-index: 100;
+    }
+
+    .m .navbar-fixed {
+        z-index: unset;
+    }
+
+    .resposHeight {
+        height: 36px !important;
+    }
+
+    /* Style for medium Screens */
+    @media screen and (max-width: 900px) {
+        .m nav ul a.btn-floating {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+
+    /* Style for small Screens */
+    @media screen and (max-width: 768px) {
+        #viewconfig {
+            margin-top: 0;
+        }
+
+        .m nav ul a.btn-floating {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        #tab-sett {
+            margin-top: 10px;
+        }
+
+        #tab-main .navbar-fixed #nav-mobile {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(1) {
+            flex: 0 0 5%;
+        }
+
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(2) {
+            flex: 0 0 30%;
+        }
+        
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(3),
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(4), 
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(5) {
+            flex: 0 0 20%;
+            display: flex;
+            justify-content: center;
+            height: 36px;
+            margin-top: 6px;
+        }
+
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(3) i.material-icons,
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(4) i.material-icons, 
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(5) i.material-icons {
+            display: none;
+        }
+
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(3) a.btn,
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(4) a.btn, 
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(5) a.btn {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .resposHeight {
+            height: 45px !important;
+        }
+
+        #devices {
+            margin-top: 1rem;
+        }
+    }
+
+    /* Style for very small Screens */
+    @media screen and (max-width: 600px) {
+        .m .navbar-fixed nav {
+            position: relative;
+            z-index: unset;
+        }
+
+        .m nav ul a.btn-floating {
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        #nav-mobile {
+            background-color: #39c;
+            padding-bottom: 2px;
+            padding-top: 2px;
+            margin-top: -8px;
+            width: calc(100%);
+        }
+        .m .navbar-fixed {
+            position: relative;
+        }
+        .m .dropdown-menu {
+            position: fixed;
+        }
+
+        #viewconfig {
+            margin-top: 0;
+        }
+
+        .m .modal {
+            width: 98%;
+        }
+        .m .modal .modal-content {
+            padding: 24px;
+        }
+
+        #tab-dev {
+            overflow-x: hidden;
+        }
+
+        .m .row .col.offset-s11 {
+            margin-left: 13px;
+            margin-bottom: 10px;
+            width: calc(100% - 26px);
+        }
+
+        .device {
+            padding: 8px;
+            width: calc(100%);
+        }
+
+        #devices {
+            margin-top: 3rem;
+        }
+
+        #tab-main .navbar-fixed #nav-mobile {
+            display: flex;
+            flex-wrap: wrap;
+            position: fixed;
+            margin-bottom: 4rem;
+            z-index: 100;
+        }
+
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(1) {
+            flex: 0 0 20%;
+        }
+
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(2) {
+            flex: 0 0 70%;
+        }
+        
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(3),
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(4), 
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(5) {
+            flex: 0 0 30%;
+            display: flex;
+            justify-content: center;
+            height: 36px;
+            margin-top: 6px;
+        }
+
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(3) i.material-icons,
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(4) i.material-icons, 
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(5) i.material-icons {
+            display: none;
+        }
+
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(3) a.btn,
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(4) a.btn, 
+        #tab-main .navbar-fixed #nav-mobile li:nth-child(5) a.btn {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        #dev_result_log {
+            overflow: auto;
+            height: 20em;
+            padding: 0.5em;
+            
+        }
+
+        .move-label-up {
+            position: absolute !important;
+            top: -60px !important;
+            left: 0 !important;
+        }
+
+        #tabs {
+            margin-top: 0;
+        }
+
+        #tab-main {
+            margin-top: 0;
+        }
+
+        .resposHeight {
+            height: 36px !important;
+        }
+
+        .m .navbar-fixed {
+            z-index: unset;
+        }
+
+        .m .page {
+            margin-top: 0rem;
+        }
+    }
 </style>
 </head>
 <body>
@@ -414,11 +651,11 @@
         <div class="row navbar-fixed">
             <nav class="nav-extended">
                 <div class="nav-wrapper">
-                    <div class="col">
+                    <div class="col s12 m6 l6">
                         <img src="zigbee.png" class="zlogo left" height="64px"/>
-                    </div>
-                    <div class="col">
-                        <h5 class="translate center-align">Zigbee adapter</h5>
+                        <p>
+                            <h5 class="translate">Zigbee adapter</h5>
+                        </p>
                     </div>
                     <ul id="nav-mobile" class="right">
                         <li>
@@ -454,8 +691,9 @@
                         <li class="tab col s2"><a href="#tab-main" id="devs"      class="translate">Devices</a></li>
                         <li class="tab col s2"><a href="#tab-map"  id="tabmap"    class="translate">Network map</a></li>
                         <li class="tab col s2"><a href="#tab-binding"             class="translate">Binding</a></li>
-                        <li class="tab col s2"><a href="#tab-exclude"             class="translate">Excludes</a></li>
-                        <!--li class="tab col s2"><a href="#tab-sett" id="settings"  class="translate">Settings</a></li-->
+                        <li class="tab col s2"><a href="#tab-debug" id="tabdebug" class="translate">Debug</a></li>
+                        <!-- <li class="tab col s2"><a href="#tab-exclude"             class="translate">Excludes</a></li>-->
+                        <!-- li class="tab col s2"><a href="#tab-sett" id="settings"  class="translate">Settings</a></li-->
                         <!-- li class="tab col s2"><a href="#tab-dev"  id="develop"   class="translate">Developer</a></li-->
                     </ul>
                 </div>
@@ -464,7 +702,7 @@
         <div id="tabs" class="tabs-content row">
             <div id="tab-main" class="col s12 page active">
                 <div class="navbar-fixed" style="height: 36px;">
-                    <nav style="height: 36px; margin-left: -12px; line-height: 24px;">
+                    <nav class="resposHeight" style="margin-left: -12px; line-height: 24px; width: calc(100% + 24px);">
                         <ul id="nav-mobile" class="left">
                             <li>
                                 <a id="rotate_btn" class="btn-floating waves-effect waves-light blue tooltipped center-align hoverable translateT" title="Rotate cards">
@@ -485,6 +723,8 @@
                                     <a id="device-order-btn" class="dropdown-trigger btn" href="#" data-target="device-order">Default</a>
                                     <ul id="device-order" class="dropdown-content" tabindex="0">
                                         <li class="device-order-item" data-type="a-z" tabindex="0"><a class="translate" data-lang="A-Z">A-Z</a></li>
+                                        <!--<li class="device-order-item" data-type="kind" tabindex="0"><a class="translate" data-lang="Kind">Kind</a></li>-->
+                                        <!--<li class="device-order-item" data-type="status" tabindex="0"><a class="translate" data-lang="Status">Status</a></li>-->
                                         <li class="device-order-item" data-type="default" tabindex="0"><a class="translate" data-lang="Default">Default</a></li>
                                     </ul>
                                 </div>
@@ -494,6 +734,21 @@
                                     <i class="material-icons left" style="line-height: 24px; margin-top: 5px;">art_track</i>
                                     <a id="room-filter-btn" class="dropdown-trigger btn" href="#" data-target="room-filter">All</a>
                                     <ul id="room-filter" class="dropdown-content" tabindex="0">
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="col input-field" style="line-height: 24px;">
+                                    <i class="material-icons left" style="line-height: 24px; margin-top: 5px;">filter_list</i>
+                                    <a id="device-filter-btn" class="dropdown-trigger btn" href="#" data-target="device-filter">All</a>
+                                    <ul id="device-filter" class="dropdown-content" tabindex="0">
+                                        <li class="device-filter-item" data-type="connected" tabindex="0"><a class="translate" data-lang="Connected">Connected</a></li>
+                                        <li class="device-filter-item" data-type="disconnected" tabindex="0"><a class="translate" data-lang="Disconnected">Disconnected</a></li>
+                                        <li class="device-filter-item" data-type="deactivated" tabindex="0"><a class="translate" data-lang="Deactivated">Deactivated</a></li>
+                                        <li class="device-filter-item" data-type="router" tabindex="0"><a class="translate" data-lang="Router">Router</a></li>
+                                        <li class="device-filter-item" data-type="enddevice" tabindex="0"><a class="translate" data-lang="Enddevice">End Device</a></li>
+                                        <li class="device-filter-item" data-type="group" tabindex="0"><a class="translate" data-lang="Group">Group</a></li>
+                                        <li class="device-filter-item" data-type="all" tabindex="0"><a class="all" data-lang="All">All</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -507,7 +762,7 @@
                 <div class="fixed-action-btn">
                     <a id="refresh" class="btn-floating waves-effect waves-light blue tooltipped center-align hoverable translateT" title="Refresh"><i class="material-icons large">autorenew</i></a>
                 </div>
-                <div id="viewconfigbtn" class="fixed-action-btn top left" style="">
+                <div id="viewconfigbtn" class="fixed-action-btn top left">
                     <a id="viewconfig" class="btn-floating waves-effect waves-light orange tooltipped center-align hoverable translateT" title="View config"><i class="material-icons large">menu</i></a>
                 </div>
                 <div id="map" class="row">
@@ -672,7 +927,7 @@
     <div class="materialize-dialogs m">
       <div id="modaledit" class="modal">
           <div class="modal-content">
-              <h3 class="translate">Config device</h3>
+              <h3 class="translate">Rename / Group device</h3>
               <div class="row">
                   <div class="col1">
                       <div class="input-field">
@@ -741,6 +996,51 @@
                       </div>
                   </div>
               </div>
+              <div class="row epid4">
+                <div class="col epid">
+                    <div class=endpointid>
+                        <p class="translate device_with_endpoint">Sub Endpoint 4</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-field groups">
+                        <select id="d_groups_ep4" class="materialSelect" multiple>
+                            <option value="1">select</option>
+                        </select>
+                        <label for="d_groups_ep4" class="translate">Groups</label>
+                    </div>
+                </div>
+              </div>
+              <div class="row epid5">
+                <div class="col epid">
+                    <div class=endpointid>
+                        <p class="translate device_with_endpoint">Sub Endpoint 5</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-field groups">
+                        <select id="d_groups_ep5" class="materialSelect" multiple>
+                            <option value="1">select</option>
+                        </select>
+                        <label for="d_groups_ep5" class="translate">Groups</label>
+                    </div>
+                </div>
+              </div>
+              <div class="row epid6">
+            <div class="col epid">
+                <div class=endpointid>
+                    <p class="translate device_with_endpoint">Sub Endpoint 6</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-field groups">
+                    <select id="d_groups_ep6" class="materialSelect" multiple>
+                        <option value="1">select</option>
+                    </select>
+                    <label for="d_groups_ep6" class="translate">Groups</label>
+                      </div>
+                  </div>
+              </div>
           </div>
           <div class="modal-footer">
               <a name="save" href="#!" class="modal-action modal-close waves-effect waves-green btn green translate">Save</a>
@@ -800,7 +1100,33 @@
           </div>
       </div>
 
-        <div id="modaldelete" class="modal">
+      <div id="chooseimage" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <h3 class="translate">Image override</h3>
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <select id="images" class="icons">
+                        </select>
+                        <label for="images" class="translate">Image</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s19 input-field">
+                    <input id="globaloverride" type="checkbox" class="value"/>
+                    <label class="translate" for="globaloverride">Apply to model</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a name="save" href="#!" class="modal-action modal-close waves-effect waves-green btn green translate">Save</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat translate">Cancel</a>
+        </div>
+    </div>
+
+
+      <div id="modaldelete" class="modal">
             <div class="modal-content">
                 <h3 class="translate">Delete confirmation</h3>
                 <p>A bunch of text</p>
@@ -899,6 +1225,12 @@
                             <label for="filterMesh" style="pointer-events: auto;">
                                 <input style="pointer-events: none;" id="filterMesh" type="checkbox" class="filled-in"/>
                                 <span style="pointer-events: none;">Mesh</span>
+                            </label>
+                        </div>
+                        <div id="physicsOnTgl" class="input-field col s12 admin-tooltip-icon translateT"
+                             title="Physics On">
+                       <label for="physicsOn" style="pointer-events: auto;">
+                        <input style="pointer-events: none;" id="physicsOn" type="checkbox" class="filled-in"checked="checked"/>                           <span style="pointer-events: none;">Physics</span>
                             </label>
                         </div>
                     </div>
