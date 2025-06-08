@@ -17,9 +17,9 @@
     <script type="text/javascript" src="../../js/adapter-settings.js"></script>
     <script type="text/javascript" src="words.js"></script>
 
-    <script type="text/javascript" src="admin.js"></script>
     <script type="text/javascript" src="shuffle.min.js"></script>
     <script type="text/javascript" src="moment.min.js"></script>
+    <script type="text/javascript" src="admin.js"></script>
     <style>
         .m .tabs {
             height: auto !important;
@@ -398,6 +398,11 @@
             height: 12px;
         }
 
+        .monospaced {
+            font-family: monospace !important;
+            resize: none;
+        }
+
         .m .dash input[type="checkbox"] + span:not(.lever) {
             width: 10px;
             height: 12px;
@@ -475,6 +480,21 @@
         .m .navbar-fixed {
             z-index: unset;
         }
+        .img-btn {
+            padding: 2px;
+            height: 100%;
+        }
+
+        @keyframes blinking-icon {
+          0%    { opacity: 0; }
+          25%   { opacity: 1; }
+          50%   { opacity: 0; }
+          75%   { opacity: 1; }
+          100%  { opacity: 0; }
+        }
+        .blinking {
+            animation: bliking-icon 4s infinite;
+        }
 
         /* Style for medium Screens */
         @media screen and (max-width: 900px) {
@@ -535,7 +555,7 @@
                 position: relative;
                 z-index: unset;
             }
-            
+
             .m nav ul a.btn-floating {
                 margin-left: 8px;
                 margin-right: 8px;
@@ -610,7 +630,7 @@
                 overflow: auto;
                 height: 20em;
                 padding: 0.5em;
-                
+
             }
 
             .move-label-up {
@@ -648,13 +668,19 @@
                     <p>
                         <h5 class="translate">Zigbee adapter</h5>
                     </p>
-                </div>
-                <ul id="nav-mobile" class="right">
+                    </div>
+                    <ul id="nav-mobile" class="right">
                     <li>
-                        <a id="state_cleanup_btn"
-                           class="btn-floating waves-effect waves-light red tooltipped center-align hoverable translateT"
-                           title="State Cleanup">
-                            <i class="material-icons large icon-blue">sync</i></a>
+                        <a id="ErrorNotificationBtn" class="btn-floating waves-effect waves-light black tooltipped center-align hoverable translateT hide" title="Zigbee not running">
+                        <i id="ErrorNotificationIcon" class="material-icons large icon-red">error</i></a>
+                        </li>
+                    <li>
+                        <a id="state_cleanup_btn" class="btn-floating waves-effect waves-light red tooltipped center-align hoverable translateT hide" title="State Cleanup">
+                        <i class="material-icons large icon-blue">delete_sweep</i></a>
+                    </li>
+                    <li>
+                        <a id="show_errors_btn" class="btn-floating waves-effect waves-light red tooltipped center-align hoverable translateT hide" title="Show Errors">
+                        <i class="material-icons large icon-blue">feedback</i></a>
                     </li>
                     <li>
                         <a id="fw_check_btn"
@@ -691,11 +717,13 @@
             <div class="nav-content">
                 <ul class="tabs tabs-transparent">
                     <li class="tab col s2"><a href="#tab-sett" id="settings" class="translate tooltipped">Settings</a></li>
+                    <li class="tab col s2"><a href="#tab-herdsman" id="hardware" class="translate tooltipped">Hardware</a></li>
                     <!--<li class="tab col s2"><a href="#tab-map" id="tabmap" class="translate tooltipped">Network map</a></li> -->
                     <!--<li class="tab col s1"><a href="#tab-binding" class="translate tooltipped">Binding</a></li> -->
                     <li class="tab col s2"><a href="#tab-exclude" class="translate tooltipped">Local Overrides</a></li>
-                    <li class="tab col s2"><a href="#tab-main" id="devs" class="translate tooltipped">Devices</a></li>                   
+                    <li class="tab col s2"><a href="#tab-main" id="devs" class="translate tooltipped">Devices</a></li>
                     <li class="tab col s2"><a href="#tab-dev" id="develop" class="translate tooltipped">Developer</a>
+                    <li class="tab col s2"><a href="#tab-debug" id="tabdebug" class="translate">Debug</a></li>
                     </li>
                 </ul>
             </div>
@@ -771,100 +799,10 @@
             </div>
         </div>
         <div id="tab-sett" class="col s12 page">
-            <div id="sett" class="row">
-                <div class="input-field input-group col s12 m6 l4">
-                    <input id="port" type="text" class="value validate"/>
-                    <label for="port" class="translate">COM port name</label>
-                    <span class="suffix">
-                            <a id="selector" class='dropdown-trigger btn' href='#' data-target='ports'><i
-                                    class="material-icons">arrow_drop_down</i></a>
-                        <!-- Dropdown Structure -->
-                            <ul id='ports' class='dropdown-content'>
-                            </ul>
-                        </span>
-                </div>
-                <div class="input-field col s12 m6 l2">
-                    <select id="adapterType" class="value">
-                        <option value="" disabled selected class="translate">Choose type</option>
-                        <option value="zstack">TI Z-Stack/CCxxxx</option>
-                        <option value="deconz">Deconz/Conbee</option>
-                        <option value="zigate">NXP/Zigate</option>
-                        <option value="ezsp">SL EFR32 (EZSP) FW 7.2.x.x</option>
-                        <option value="ember">SL EFR32 (EMBER) FW 7.4.x.x</option>
-                    </select>
-                    <label class="translate">Type</label>
-                </div>
-                
-               <div class="input-field col s6 m3 l2">
-                    <input id="flowCTRL" type="checkbox" class="value"/>
-                    <label class="translate" for="flowCTRL">flow control</label>
-                </div>
-                                
-                <div class="input-field col s6 m3 l2">
-                    <input id="baudRate" type="number" min="38400" max="115200" class="value"/>
-                    <label class="translate" for="baudRate">Baudate Deconz/Conbee</label>
-                </div>
-                <div class="input-field col s6 m3 l2">
-                    <input id="countDown" type="number" min="10" max="240" class="value"/>
-                    <label class="translate" for="countDown">Countdown</label>
-                </div>
-            </div>
             <div class="row">
-                <h6>Network</h6>
-                <div class="row">
-                    <div class="input-field col s12 m6 l4">
-                        <input id="extPanID" type="text" pattern="[a-fA-F\d]+" minlength="16" maxlength="16"
-                               class="validate value"/>
-                        <label class="translate" for="extPanID">ExtPanID</label>
-                    </div>
-                    <div class="input-field col s12 m6 l8">
-                        <p class="translate">ExtPanIDText</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12 m6 l4">
-                        <input id="panID" type="number" min="1" max="65565" class="value"/>
-                        <label class="translate" for="panID">PanID</label>
-                    </div>
-                    <div class="input-field col s12 m6 l8">
-                        <p class="translate">PanIDText</p>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <div class="input-field suffix col s12 m6 l4">
-                        <select id="channel" class="value">
-                            <option value="" disabled selected class="translate">Choose channel</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                        </select>
-                        <label class="translate">Channel</label>
-                        <a id="scan" class='btn' data-target='channel'><i class="material-icons">graphic_eq</i></a>
-                    </div>
-                    <div class="input-field col s12 m6 l8">
-                        <p class="translate">ChannelChangeText</p>
-                    </div>
-                </div>
-                <div class="input-field col s12 m6 l4">
-                    <input id="precfgkey" type="text" pattern="[a-fA-F\d]+" class="validate value"/>
-                    <label class="translate" for="precfgkey">Transport Key</label>
-                </div>
-                <div class="input-field col s12 m6 l4 col-transmitPower">
-                    <select id="transmitPower" class="value">
+                <h6>Adapter</h6>
+                <div class="input-field col s12 m6 l8 col-transmitPower">
+                    <select id="transmitPower" class="value" >
                         <option value="" disabled selected class="translate">transmitPower</option>
                         <option value="-22">low</option>
                         <option value="0">norm</option>
@@ -873,10 +811,10 @@
                     </select>
                     <label class="translate" for="transmitPower">transmitPower</label>
                 </div>
-            </div>
-
-            <div class="row">
-                <h6 class="translate">Others</h6>
+                <div class="input-field col s12 m6 l2">
+                    <input id="countDown" type="number" min="10" max="240" class="value"/>
+                    <label class="translate" for="countDown">Countdown</label>
+                </div>
                 <div class="input-field col s12 m6 l4 col-disableLed">
                     <input id="disableLed" type="checkbox" class="value"/>
                     <label class="translate" for="disableLed">Disable LED for cc2531</label>
@@ -893,14 +831,10 @@
                     <input id="warnOnDeviceAnnouncement" type="checkbox" class="value"/>
                     <label class="translate" for="warnOnDeviceAnnouncement">Log warning on Zigbee device announcement</label>
                 </div>
-                <div class="input-field col s12 m6 l4">
-                    <a id="reset-btn" class="waves-effect waves-light white-text btn-large translate">Reset...</a>
-                </div>
                 <div class="input-field col s12 m6 l4 col-disableBackup">
                     <input id="disableBackup" type="checkbox" class="value"/>
                     <label class="translate" for="disableBackup">disable internal Backup</label>
                 </div>
-
             </div>
             <div class="row">
                 <h6 class="translate">External converters</h6>
@@ -914,7 +848,117 @@
                 <label class="translate" for="startWithInconsistent">SettingsExclude</label>
             </div>
         </div>
+        <div id="tab-herdsman" class="col s12 page">
+            <div class="row">
+                <h6>Zigbee hardware and network settings</h6>
+            </div>
+            <div id="port-row" class="row">
+                <div class="input-field input-group col">
+                    <input id="port" type="text" class="value validate"/>
+                    <label for="port" class="translate">COM port name</label>
+                    <span class="suffix">
+                            <a id="selector" class='dropdown-trigger btn' href='#' data-target='ports'><i
+                                    class="material-icons">arrow_drop_down</i></a>
+                        <!-- Dropdown Structure -->
+                            <ul id='ports' class='dropdown-content'>
+                            </ul>
+                    </span>
+                </div>
+            </div>
+            <div id="sett" class="row">
+                    <div class="input-field col s12 m6 l2">
+                    <select id="adapterType" class="value">
+                        <option value="" disabled selected class="translate">Choose type</option>
+                        <option value="zstack">TI Z-Stack/CCxxxx</option>
+                        <option value="deconz">Deconz/Conbee</option>
+                        <option value="zigate">NXP/Zigate</option>
+                        <option value="ezsp">SL EFR32 (EZSP) FW 7.2.x.x</option>
+                        <option value="ember">SL EFR32 (EMBER) FW 7.4.x.x</option>
+                    </select>
+                    <label class="translate">Type</label>
+                </div>
+                <div class="input-field col s6 m3 l2">
+                    <input id="baudRate" type="number" min="38400" max="115200" class="value"/>
+                    <label class="translate" for="baudRate">Baudate Deconz/Conbee</label>
+                </div>
+                <div class="input-field col s6 m3 l2">
+                    <input id="flowCTRL" type="checkbox" class="value"/>
+                    <label class="translate" for="flowCTRL">flow control</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s9 m4 l3">
+                    <input id="extPanID" type="text" pattern="[a-fA-F\d]+" minlength="16" maxlength="16"
+                            class="validate value"/>
+                    <label class="translate" for="extPanID">ExtPanID
+                        <i id="extPanID_OK" class="material-icons tiny icon-green">check</i>
+                        <i id="extPanID_NOK" class="material-icons tiny icon-red">clear</i>
+                        <i id="extPanID_ALERT" class="material-icons tiny icon-orange hide">report_problem</i>
+                    </label>
+                </div>
+                <div class="input-field col s12 m6 l8">
+                    <p class="translate">ExtPanIDText</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s9 m4 l3">
+                    <input id="panID" type="number" min="1" max="65565" class="value"/>
+                    <label class="translate" for="panID">PanID
+                        <i id="panID_OK" class="material-icons tiny icon-green">check</i>
+                        <i id="panID_NOK" class="material-icons tiny icon-red">clear</i>
+                        <i id="panID_ALERT" class="material-icons tiny icon-orange hide">report_problem</i>
+                    </label>
+                </div>
+                <div class="input-field col s12 m6 l8">
+                    <p class="translate">PanIDText</p>
+                </div>
 
+            </div>
+            <div class="row">
+                <div class="input-field suffix col s9 m4 l3">
+                    <input id="channel" type="number" min="11" max=" 26" class="value"/>
+                    <label class="translate">Channel
+                        <i id="channel_OK" class="material-icons tiny icon-green">check</i>
+                        <i id="channel_NOK" class="material-icons tiny icon-red">clear</i>
+                        <i id="channel_ALERT" class="material-icons tiny icon-orange">report_problem</i>
+                    </label>
+                </div>
+                <div class="input-field col s12 m6 l8">
+                    <a id="scan" class="waves-effect waves-light btn" data-target='channel_a'><img class="img-btn" src="img/channel_scan.png" title="scan zigbee channels" ></a>
+                    <p class="translate">ChannelChangeText</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s9 m4 l3 disabled">
+                    <input id="precfgkey" type="text" pattern="[a-fA-F\d]+" class="validate value disabled"/>
+                    <label class="translate" for="precfgkey">Transport Key
+                        <i id="precfgkey_OK" class="material-icons tiny icon-green">check</i>
+                        <i id="precfgkey_NOK" class="material-icons tiny icon-red">clear</i>
+                    </label>
+                </div>
+                <div class="input-field col s9 m4 l2">
+                    <input id="autostart" type="checkbox" class="value"/>
+                    <label class="translate" for="flowCTRL">start the Zigbee network automatically</label>
+                </div>
+            </div>
+            <div class="row">
+                <h6>Test and Verification</h6>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a id="test-btn" class="waves-effect waves-light white-text btn"><img class="img-btn" src="img/test_port.png" title="test port"></a>&nbsp;
+                    <a id="show_test_run" class="waves-effect waves-light blue btn"><img class="img-btn" src="img/start_stop.png" title="start / stop" ></a>&nbsp;
+                    <a id="readNVRam-btn" class="waves-effect waves-light btn"><img class="img-btn" src="img/nvram_read.png" title="read nvram backup" ></a>&nbsp;
+                    <a id="deleteNVRam-btn" class="waves-effect waves-light btn"><img class="img-btn" src="img/nvram_delete.png" title="remove nvram backup" ></a>&nbsp;
+                    <a id="reset-btn" class="waves-effect waves-light white-text btn translate"><img class="img-btn" src="img/reset.png" title="reset..." ></a>&nbsp;
+                </div>
+            </div>
+            <div class="row textarea">
+                <div class="col">
+                    <textarea class="monospaced" id="stdout_t" disabled="disabled" cols="120" rows="20" style="height: calc(50% - 115px)"></textarea>
+                </div>
+            </div>
+        </div>
         <div id="tab-expos" class="col s12 page">
             <div id="exposes" class="row">
                 <a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
@@ -933,7 +977,6 @@
                 </div>
             </div>
         </div>
-
         <div id="tab-dev" class="col s12 page">
             <div id="develop" class="row col s12">
                 <div class="row">
@@ -947,7 +990,7 @@
                         <p class="translate">notImplementedText</p>
                         <p><span class="translate">You find good explanations what the settings mean</span>&nbsp;
                             <a href="https://docs.smartthings.com/en/latest/device-type-developers-guide/zigbee-primer.html"
-                               target="_blank" class="translate">here</a>&nbsp;
+                                target="_blank" class="translate">here</a>&nbsp;
                             <span class="translate">and in</span>&nbsp<a
                                     href="https://www.nxp.com/docs/en/user-guide/JN-UG-3115.pdf" target="_blank">ZigBee
                                 Cluster Library</a>.
@@ -1028,7 +1071,7 @@
                             <label for="dev-selector" class="translate">Device</label>
                         </div>
                         <div class="input-field col s12 m6 l4 admin-tooltip-icon translateT"
-                             title="Some kind of 'device within device'. Every endpoint may have different functions. If one does not work, test another.">
+                                title="Some kind of 'device within device'. Every endpoint may have different functions. If one does not work, test another.">
                             <select id="ep-selector">
                                 <option value="" disabled selected class="translate">Select an Endpoint</option>
                             </select>
@@ -1038,14 +1081,14 @@
                     <div class="row">
                         <div class="row">
                             <div class="input-field col s12 m6 l4 admin-tooltip-icon"
-                                 title="Group of functions. AttributeIds will change depending on your choice here.">
+                                    title="Group of functions. AttributeIds will change depending on your choice here.">
                                 <select id="cid-selector">
                                     <option value="" disabled selected class="translate">Select cid</option>
                                 </select>
                                 <label for="cid-selector" class="translate">Cluster ID</label>
                             </div>
                             <div class="input-field col s12 m6 l4 admin-tooltip-icon"
-                                 title="Command type. Available commands will change depending on your choice here. Some actions need Foundation, others Functional, you may test both.">
+                                    title="Command type. Available commands will change depending on your choice here. Some actions need Foundation, others Functional, you may test both.">
                                 <select id="cmd-type-selector">
                                     <option value="foundation" selected>Foundation</option>
                                     <option value="functional">Functional</option>
@@ -1059,7 +1102,7 @@
                                 <label for="cmd-selector" class="translate">Command</label>
                             </div>
                             <div class="input-field col s12 m6 l4 admin-tooltip-icon"
-                                 title="The setting you are interested in.">
+                                    title="The setting you are interested in.">
                                 <select id="attrid-selector">
                                     <option value="" disabled selected class="translate">Select Attribute</option>
                                 </select>
@@ -1067,16 +1110,16 @@
                             </div>
                             <div class="col s12">
                                 <div class="input-field col s12 m6 l4 offset-s1 admin-tooltip-icon translateT"
-                                     title="Check if your Command needs to submit a value. For example, cmd 'write' needs the value you want to write to your device.">
+                                        title="Check if your Command needs to submit a value. For example, cmd 'write' needs the value you want to write to your device.">
                                     <label for="value-needed" style="pointer-events: auto;">
                                         <!-- workaround input not clickable https://codepen.io/alexisdiel/pen/gxwPWj -->
                                         <input style="pointer-events: none;" id="value-needed" type="checkbox"
-                                               class="filled-in"/>
+                                                class="filled-in"/>
                                         <span style="pointer-events: none;" class="translate">Needs value</span>
                                     </label>
                                 </div>
                                 <div class="input-field col s12 m6 l4 admin-tooltip-icon translateT"
-                                     title="The value to send to your device (use douple-quotes if a number is a string).">
+                                        title="The value to send to your device (use douple-quotes if a number is a string).">
                                     <input id="value-input" disabled placeholder="0">
                                     <label for="value-input" class="move-label-up">Value</label>
                                 </div>
@@ -1087,11 +1130,11 @@
                 <div class="col s12 m12 l12">
                     <div class="row">
                         <div id="expert-toggle" class="input-field col s12 m6 l4 admin-tooltip-icon translateT"
-                             title="Switch expert mode to enter raw data, sent to zigbee device.">
+                                title="Switch expert mode to enter raw data, sent to zigbee device.">
                             <label for="expert-mode" style="pointer-events: auto;">
                                 <!-- workaround input not clickable https://codepen.io/alexisdiel/pen/gxwPWj -->
                                 <input style="pointer-events: none;" id="expert-mode" type="checkbox"
-                                       class="filled-in"/>
+                                        class="filled-in"/>
                                 <span style="pointer-events: none;" class="translate">Expert mode</span>
                             </label>
                         </div>
@@ -1111,8 +1154,8 @@
                         </div>
                         <div class="card-action">
                             <a id="dev-send-btn"
-                               class="waves-effect waves-light white-text btn-large tooltipped translateT translate"
-                               data-position="bottom" title="Send data to Zigbee">Run</a>
+                                class="waves-effect waves-light white-text btn-large tooltipped translateT translate"
+                                data-position="bottom" title="Send data to Zigbee">Run</a>
                         </div>
                     </div>
                 </div>
@@ -1140,8 +1183,8 @@
                         </table>
                     </div>
                     <a id="add_group"
-                       class="btn-floating waves-effect waves-light blue table-button-add tooltipped hoverable translateT"
-                       title="Add group">
+                        class="btn-floating waves-effect waves-light blue table-button-add tooltipped hoverable translateT"
+                        title="Add group">
                         <i class="material-icons">add</i>
                     </a>
                 </div>
@@ -1150,8 +1193,8 @@
         <div id="tab-binding" class="col s12 page">
             <div class="fixed-action-btn" style="margin-bottom: 100px">
                 <a id="add_binding"
-                   class="btn-floating waves-effect waves-light blue tooltipped center-align hoverable translateT"
-                   title="Add binding"><i class="material-icons large">add</i></a>
+                    class="btn-floating waves-effect waves-light blue tooltipped center-align hoverable translateT"
+                    title="Add binding"><i class="material-icons large">add</i></a>
             </div>
             <div id="binding" class="row">
             </div>
@@ -1162,11 +1205,15 @@
             </div>
             <div class="fixed-action-btn" style="margin-bottom: 100px">
                 <a id="add_exclude"
-                   class="btn-floating waves-effect waves-light blue tooltipped center-align hoverable translateT"
-                   title="Add exlude"><i class="material-icons large">add</i></a>
+                    class="btn-floating waves-effect waves-light blue tooltipped center-align hoverable translateT"
+                    title="Add exlude"><i class="material-icons large">add</i></a>
             </div>
             <div id="exclude" class="row">
             </div>
+        </div>
+        <div id="tab-debug" class="col s12 page">
+            <ul id="dbg_data_list">
+            </ul>
         </div>
     </div>
 </div>
@@ -1183,168 +1230,171 @@
                     </div>
                 </div>
             </div>
-            <div class="row epid0">
-                <div class="col">
-                    <div class=endpointid>
-                        <p class="translate device_with_endpoint">Main Endpoint</p>
-                    </div>
-                </div>
-                <div class="col1">
-                    <div class="input-field groups">
-                        <select id="d_groups_ep0" class="materialSelect" multiple>
-                            <option value="1">select</option>
-                        </select>
-                        <label for="d_groups_ep0" class="translate">Groups</label>
-                    </div>
-                </div>
+            <div class="groups_available">
+            <div class="row">
+              <h6>Groups</h6>
             </div>
-            <div class="row epid1">
-                <div class="col epid">
-                    <div class=endpointid>
-                        <p class="translate device_with_endpoint">Sub Endpoint 1</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-field groups">
-                        <select id="d_groups_ep1" class="materialSelect" multiple>
-                            <option value="1">select</option>
-                        </select>
-                        <label for="d_groups_ep1" class="translate">Groups</label>
-                    </div>
-                </div>
+              <div class="row epid0">
+                  <div class="col">
+                      <div class=endpointid>
+                          <p class="translate device_with_endpoint">Main Endpoint</p>
+                      </div>
+                  </div>
+                  <div class="col1">
+                      <div class="input-field groups">
+                          <select id="d_groups_ep0" class="materialSelect" multiple>
+                              <option value="1">select</option>
+                          </select>
+                          <label for="d_groups_ep0" class="translate">Groups</label>
+                      </div>
+                  </div>
+              </div>
+              <div class="row epid1">
+                  <div class="col epid">
+                      <div class=endpointid>
+                          <p class="translate device_with_endpoint">Sub Endpoint 1</p>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="input-field groups">
+                          <select id="d_groups_ep1" class="materialSelect" multiple>
+                              <option value="1">select</option>
+                          </select>
+                          <label for="d_groups_ep1" class="translate">Groups</label>
+                      </div>
+                  </div>
+              </div>
+              <div class="row epid2">
+                  <div class="col epid">
+                      <div class=endpointid>
+                          <p class="translate device_with_endpoint">Sub Endpoint 2</p>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="input-field groups">
+                          <select id="d_groups_ep2" class="materialSelect" multiple>
+                              <option value="1">select</option>
+                          </select>
+                          <label for="d_groups_ep2" class="translate">Groups</label>
+                      </div>
+                  </div>
+              </div>
+              <div class="row epid3">
+                  <div class="col epid">
+                      <div class=endpointid>
+                          <p class="translate device_with_endpoint">Sub Endpoint 3</p>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="input-field groups">
+                          <select id="d_groups_ep3" class="materialSelect" multiple>
+                              <option value="1">select</option>
+                          </select>
+                          <label for="d_groups_ep3" class="translate">Groups</label>
+                      </div>
+                  </div>
+              </div>
+              <div class="row epid4">
+                  <div class="col epid">
+                      <div class=endpointid>
+                          <p class="translate device_with_endpoint">Sub Endpoint 4</p>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="input-field groups">
+                          <select id="d_groups_ep4" class="materialSelect" multiple>
+                              <option value="1">select</option>
+                          </select>
+                          <label for="d_groups_ep4" class="translate">Groups</label>
+                      </div>
+                  </div>
+              </div>
+              <div class="row epid5">
+                  <div class="col epid">
+                      <div class=endpointid>
+                          <p class="translate device_with_endpoint">Sub Endpoint 5</p>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="input-field groups">
+                          <select id="d_groups_ep5" class="materialSelect" multiple>
+                              <option value="1">select</option>
+                          </select>
+                          <label for="d_groups_ep5" class="translate">Groups</label>
+                      </div>
+                  </div>
+              </div>
+              <div class="row epid6">
+              <div class="col epid">
+                  <div class=endpointid>
+                      <p class="translate device_with_endpoint">Sub Endpoint 6</p>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="input-field groups">
+                      <select id="d_groups_ep6" class="materialSelect" multiple>
+                          <option value="1">select</option>
+                      </select>
+                      <label for="d_groups_ep6" class="translate">Groups</label>
+                      </div>
+                  </div>
+              </div>
             </div>
-            <div class="row epid2">
-                <div class="col epid">
-                    <div class=endpointid>
-                        <p class="translate device_with_endpoint">Sub Endpoint 2</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-field groups">
-                        <select id="d_groups_ep2" class="materialSelect" multiple>
-                            <option value="1">select</option>
-                        </select>
-                        <label for="d_groups_ep2" class="translate">Groups</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row epid3">
-                <div class="col epid">
-                    <div class=endpointid>
-                        <p class="translate device_with_endpoint">Sub Endpoint 3</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-field groups">
-                        <select id="d_groups_ep3" class="materialSelect" multiple>
-                            <option value="1">select</option>
-                        </select>
-                        <label for="d_groups_ep3" class="translate">Groups</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row epid4">
-                <div class="col epid">
-                    <div class=endpointid>
-                        <p class="translate device_with_endpoint">Sub Endpoint 4</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-field groups">
-                        <select id="d_groups_ep4" class="materialSelect" multiple>
-                            <option value="1">select</option>
-                        </select>
-                        <label for="d_groups_ep4" class="translate">Groups</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row epid5">
-                <div class="col epid">
-                    <div class=endpointid>
-                        <p class="translate device_with_endpoint">Sub Endpoint 5</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-field groups">
-                        <select id="d_groups_ep5" class="materialSelect" multiple>
-                            <option value="1">select</option>
-                        </select>
-                        <label for="d_groups_ep5" class="translate">Groups</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row epid6">
-                <div class="col epid">
-                    <div class=endpointid>
-                        <p class="translate device_with_endpoint">Sub Endpoint 6</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-field groups">
-                        <select id="d_groups_ep6" class="materialSelect" multiple>
-                            <option value="1">select</option>
-                        </select>
-                        <label for="d_groups_ep6" class="translate">Groups</label>
-                    </div>
-                </div>
+            <div class="options_available">
+              <div class="row">
+                  <h6>Options</h6>
+              </div>
+              <div class="row options">
+
+              </div>
             </div>
         </div>
         <div class="modal-footer">
-            <a name="save" href="#!"
-               class="modal-action modal-close waves-effect waves-green btn green translate">Save</a>
+            <a name="remove_options" class="waves-effect waves-green btn green translate"><i class="material-icons large">remove_circle</i></a>
+            <a name="add_options" class="waves-effect waves-green btn green translate"><i class="material-icons large">add_circle</i></a>
+            <a name="save" href="#!" class="modal-action modal-close waves-effect waves-green btn green translate">Save</a>
             <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat translate">Cancel</a>
         </div>
     </div>
 
     <div id="groupedit" class="modal">
         <div class="modal-content">
-            <div class="addgroup">
-                <h3 class="translate">Add Group</h3>
-            </div>
-            <div class="editgroup">
+            <div class = "editgroup">
                 <h3 class="translate">Edit Group</h3>
             </div>
             <div class="row">
-                <div class="col s4 m4 l2">
-                    <div class="input-field groupid">
-                        <input id="g_index" type="number" min="1" class="value validate">
-                        <label for="g_index" class="translate">№</label>
-                    </div>
+              <div class="col s4 m4 l2 hide">
+                  <div class="input-field groupid">
+                    <input id="g_index" type="number" min="1" class="value validate">
+                    <label for="g_index" class="translate">№</label>
+                  </div>
                 </div>
-                <div class="input-field col s8 m8 l10">
+                  <div class="input-field col s8 m8 l10">
                     <input id="g_name" type="text" class="value validate">
                     <label for="g_name" class="translate">Name</label>
                 </div>
             </div>
-            <div class="row hide">
-                <div class="col s12">
-                    <div class="input-field members">
-                        <label for="g_members" class="translate">Members</label>
-                        <select id="g_members" class="materialSelect" multiple>
-                            <option value="1">value</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="chooseimage" class="modal">
-        <div class="modal-content">
             <div class="row">
-                <h3 class="translate">Image override</h3>
-                <div class="row">
-                    <div class="col s12 input-field">
-                        <select id="images" class="icons">
-                        </select>
-                        <label for="images" class="translate">Image</label>
-                    </div>
-                </div>    
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s19 input-field">
-                <input id="globaloverride" type="checkbox" class="value"/>
-                <label class="translate" for="globaloverride">Apply to model</label>
+              <div class="col s12">
+                <div class="input-field members">
+                  <label for="g_members" class="translate">Members</label>
+                  <ul class="collection">
+                      <li class="collection-item">
+                      <label>
+                          <input id="member1" type="checkbox" class="value"/>
+                          <span class="translate" for="member1">Member 1</span>
+                      </label>
+                      </li>
+                      <li class="collection-item">
+                          Member 2
+                          <label>
+                          <input id="globaloverride" type="checkbox" class="value"/>
+                          <span class="translate" for="member2"></span>
+                          </label>
+                      </li>
+                  </ul>
+                </div>
+              </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -1352,7 +1402,43 @@
             <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat translate">Cancel</a>
         </div>
     </div>
-        
+
+    <div id="chooseimage" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <h3 class="translate">Data override</h3>
+                <div class="row">
+                    <div class="col s12 input-field">
+                        <input id="d_name" type="text" class="value validate">
+                        <label for="d_name" class="translate">Name</label>
+                    </div>
+                </div>
+                    <div class="row">
+                    <div class="col s9 input-field">
+                        <select id="images" class="icons">
+                        </select>
+                        <label for="images" class="translate">Image</label>
+                    </div>
+                    <div class="col s3 ">
+                        <div class="currentIcon"><img src="img/unknown.png"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="forcedelete" id = "globaldiv">
+                <label>
+                    <input id="globaloverride" type="checkbox" class="value"/>
+                    <span class="translate" for="globaloverride">Apply to model</span>
+                </label>
+            </div>
+            <a name="save" href="#!" class="modal-action modal-close waves-effect waves-green btn green translate">Save</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat translate">Cancel</a>
+        </div>
+      </div>
+
     <div id="codeentry" class="modal">
         <div class="modal-content">
             <div class="addgroup">
@@ -1393,13 +1479,11 @@
             <p>A bunch of text</p>
         </div>
         <div class="modal-footer">
-            <div id="cforcediv" class="hide forcedelete">
+            <div id="cforcediv" class="forcedelete">
                 <input id="cforce" type="checkbox" class="value"/>
-                <label class="translate" for="cforce">Force removed states with custom configuration (history, upnp,
-                    etc.)</label>
+                <label class="translate" for="cforce">Force removed states with custom configuration (history, upnp, etc.)</label>
             </div>
-            <a name="yes" href="#!"
-               class="modal-action modal-close waves-effect waves-green btn green translate">Yes</a>
+            <a name="yes" href="#!" class="modal-action modal-close waves-effect waves-green btn green translate">Yes</a>
             <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat translate">Cancel</a>
         </div>
     </div>
@@ -1422,14 +1506,12 @@
                 <div id="progress_line" class="determinate" style="width: 0%"></div>
             </div>
             <div class="row textarea">
-                <textarea id="stdout" disabled="disabled" cols="120" rows="30"
-                          style="height: calc(100% - 115px)"></textarea>
+                <textarea id="stdout" disabled="disabled" cols="120" rows="30" style="height: calc(100% - 115px)"></textarea>
             </div>
         </div>
         <div class="modal-footer">
             <!-- <a name="stop" href="#!" class="modal-action modal-close waves-effect waves-red btn-flat left">Stop</a> -->
-            <a name="hide" href="#!"
-               class="modal-action modal-close waves-effect waves-green btn green translate">Hide</a>
+            <a name="hidepairing" id="hidepairing" href="#!" class="modal-action modal-close waves-effect waves-green btn green translate">Hide</a>
         </div>
     </div>
 
@@ -1439,7 +1521,6 @@
             <p class="translate">Reset Info</p>
             <a id="soft" data-mode="soft" class="modal-action modal-close waves-effect waves-red btn translate">Soft-Reset</a>
             <a id="hard" data-mode="hard" class="modal-action modal-close waves-effect waves-red btn translate">Hard-Reset</a>
-            <a id="delNvbackup" data-mode="delNvbackup" class="modal-action modal-close waves-effect waves-red btn translate">delete NVBackup.json</a>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat translate">Cancel</a>
@@ -1486,7 +1567,15 @@
                     <div id="physicsOnTgl" class="input-field col s12 admin-tooltip-icon translateT"
                          title="Physics On">
                         <label for="physicsOn" style="pointer-events: auto;">
-                            <input style="pointer-events: none;" id="physicsOn" type="checkbox" class="filled-in"checked="checked"/>                            <span style="pointer-events: none;">Physics</span>
+                            <input style="pointer-events: none;" id="physicsOn" type="checkbox" class="filled-in"checked="checked"/>
+                            <span style="pointer-events: none;">Physics</span>
+                        </label>
+                    </div>
+                    <div id="errorCollectionTgl" class="input-field col s12 admin-tooltip-icon translateT"
+                         title="Show messages">
+                        <label for="errorCollectionOn" style="pointer-events: auto;">
+                            <input style="pointer-events: none;" id="errorCollectionOn" type="checkbox" class="filled-in"checked="checked"/>
+                            <span style="pointer-events: none;">Show messages</span>
                         </label>
                     </div>
                 </div>

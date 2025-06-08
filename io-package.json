@@ -1,8 +1,86 @@
 {
   "common": {
     "name": "zigbee",
-    "version": "2.0.1",
+    "version": "3.0.1",
     "news": {
+      "3.0.1": {
+        "en": "Fix for Ikea SOMRIG configuration raising 'definition.endpoint is not a function' error.\nAccess to 'zigbee2mqtt options as settings in zigbee adapter (ALPHA Stage !)\nFix for 'error: zigbee.0 (1118300) zigbee.0 already running' at adapter start (Alpha Stage)\nUpdated hardware configuration panel - exchanged text buttons for buttons with icons.\nLimited states on device tiles to states which are read only or which can be modified sensibly via the device tile.\n",
+        "de": "Fix für Ikea SOMRIG Konfiguration erhöhen 'Definition. Endpoint ist kein Funktionsfehler.\nZugriff auf 'zigbee2mqtt Optionen als Einstellungen im Zickbee Adapter (ALPHA Stage!)\nFix für 'error: zigbee.0 (1118300) zigbee.0 bereits läuft' bei Adapterstart (Alpha Stage)\nAktualisiertes Hardware-Konfigurationsfeld - ausgetauschte Texttasten für Tasten mit Symbolen.\nBegrenzte Zustände auf Gerätefliesen zu Zuständen, die nur gelesen werden oder über die Gerätefliese sensibel modifiziert werden können.\n",
+        "ru": "Исправьте конфигурацию IKEA SOMRIG, повысив «определение». Конечная точка не является ошибкой функции.\nДоступ к опциям Zigbee2mqtt в качестве настроек в адаптере Zigbee (стадия ALPHA!)\nИсправьте ошибку: zigbee.0 (1118300) zigbee.0 уже работает на старте адаптера\nОбновленная аппаратная панель конфигурации - обмен текстовыми кнопками на кнопки с иконками.\nОграниченные состояния на плитках устройства к состояниям, которые читаются только или которые могут быть изменены чувственно через плитку устройства.\n",
+        "pt": "Corrigir para configuração Ikea SOMRIG elevando 'definição. endpoint não é um erro de função.\nAcesso às opções \"zigbee2mqttt como configurações no adaptador zigbee (Estação LAPHA!)\nFix for 'error: zigbee.0 (1118300) zigbee.0 já em execução' no início do adaptador (Alpha Stage)\nPainel de configuração de hardware atualizado - botões de texto trocados para botões com ícones.\nEstados limitados em telhas de dispositivo para estados que são lidos apenas ou que podem ser modificados sensivelmente através da telha do dispositivo.\n",
+        "nl": "Fix voor Ikea SOMRIG configuratie verhogen 'definitie. eindpunt is geen functiefout.\nToegang tot 'zigbee2mqtt opties als instellingen in zigbee adapter (ALPHA Stage !)\nFix voor 'fout: zigbee.0 (1118300) zigbee.0 al actief' bij adapterstart (Alpha Stage)\nBijgewerkt hardware configuratiepaneel - uitgewisselde tekstknoppen voor knoppen met pictogrammen.\nBeperkte toestanden op apparaattegels naar toestanden die alleen worden gelezen of die verstandig kunnen worden gewijzigd via de apparaattegel.\n",
+        "fr": "Correction pour la configuration Ikea SOMRIG augmentant la définition. le paramètre n'est pas une erreur de fonction.\nAccès aux options 'zigbee2mqtt comme réglages dans l'adaptateur zigbee (ALPHA Stage !)\nCorrection pour 'erreur: zigbee.0 (1118300) zigbee.0 déjà en cours d'exécution' au démarrage de l'adaptateur (Alpha Stage)\nPanneau de configuration du matériel mis à jour - boutons texte échangés pour les boutons avec des icônes.\nLes états limités sur les tuiles de l'appareil aux états qui sont lus seulement ou qui peuvent être modifiés de façon sensible via la tuile de l'appareil.\n",
+        "it": "Fissare per Ikea SOMRIG configurazione aumentando 'definizione. endpoint non è un errore di funzione.\nAccesso alle opzioni 'zigbee2mqtt come impostazioni nell'adattatore zigbee (ALPHA Stage !)\nCorrezione per 'error: zigbee.0 (1118300) zigbee.0 già in esecuzione' all'inizio dell'adattatore (Alpha Stage)\nPannello di configurazione hardware aggiornato - pulsanti di testo scambiati per pulsanti con icone.\nStati limitati su piastrelle di dispositivo a stati che sono letti solo o che possono essere modificati sensibilmente tramite la piastrella del dispositivo.\n",
+        "es": "Arregla para la configuración de Ikea SOMRIG criando 'definición. endpoint no es un error de función.\nAcceso a las opciones 'zigbee2mqtt como configuración en el adaptador de zigbee (ALPHA Stage !)\nFijación para 'error: zigbee.0 (1118300) zigbee.0 ya funcionando en el inicio del adaptador (Alpha Stage)\nPanel de configuración de hardware actualizado - botones de texto intercambiados para botones con iconos.\nEstados limitados en fichas de dispositivo a estados que se leen solamente o que pueden ser modificados de forma sensata a través de la ficha del dispositivo.\n",
+        "pl": "Napraw dla definicji podnoszenie konfiguracji Ikea SOMRIG. Punkt końcowy nie jest błędem funkcji.\nDostęp do opcji 'zigbee2mqtt jako ustawień w adapterze zigbee (ALPHA Stage!)\nFix for 'error: zigbee.0 (1118300) zigbee.0 already running' at adapter start (Alpha Stage)\nAktualizacja panelu konfiguracji sprzętowej - wymieniono przyciski tekstowe na przyciski z ikonami.\nOgraniczone stany na płytkach urządzenia do stanów, które są tylko odczytywane lub które mogą być modyfikowane w sposób rozsądny za pomocą płytki urządzenia.\n",
+        "uk": "Виправлення для налаштування Ikea SOMRIG 'Визначення. кінцева точка не є помилкою функції.\nДоступ до опцій Zigbee2mqtt як налаштування адаптера Zigbee (ALPHA Stage !)\nВиправлення для 'error: zigbee.0 (1118300) zigbee.0 вже запущений' при запуску адаптера (Alpha Stage)\nОновлена панель конфігурації обладнання - обмінні текстові кнопки для гудзиків з іконками.\nОбмежені стани на плитці пристрою для станів, які читаються тільки або які можуть бути змінені, швидко через плитку пристрою.\n",
+        "zh-cn": "修复Ikea SOMRIG 配置提升定义 。 结束点不是一个函数'错误.\n访问 'zigbee2mqtt 选项作为 Zigbee 适配器的设置( ALPHA stage !) \n在适配器启动( Alpha Stage)时为 'error: zigbee. 0 (1118300) zigbee. 0 已经运行' 进行修复\n更新的硬件配置面板 - 用图标交换文本按钮作为按钮.\n将设备瓦片的状态限制在只读或通过设备瓦片可敏感修改的状态.\n"
+      },
+      "3.0.0": {
+        "en": "Breaking change: Start of zigbee subsystem requires configuration entry !!!\nHardware configuration panel\nUpdate for external converter - detect /dist/ subfolder\nUpdate device image: use of icons defined in external converter (beta)\n",
+        "de": "Bruchänderung: Beginn des Zickbee Subsystems erfordert Konfigurationseintrag!!!\nHardware-Konfigurationspanel\nUpdate für externen Konverter - Erkennung /dist/ Unterordner\nGerätebild aktualisieren: Verwendung von Icons, die im externen Konverter (beta) definiert sind\n",
+        "ru": "Переломные изменения: Запуск подсистемы Zigbee требует ввода конфигурации!!!\nАппаратная конфигурационная панель\nОбновление внешнего конвертера - детектировать /dist/ подпапку\nОбновление изображения устройства: использование значков, определенных во внешнем конвертере (бета)\n",
+        "pt": "Mudança de ruptura: O início do subsistema zigbee requer entrada de configuração !!!\nPainel de configuração do hardware\nAtualização para conversor externo - detectar /dist / subpastas\nImagem do dispositivo de atualização: uso de ícones definidos no conversor externo (beta)\n",
+        "nl": "Verandering: Start van zigbee subsysteem vereist configuratie toegang !!!\nHardware configuratiepaneel\nUpdate voor externe converter - detecteer /dist/submap\nAfbeelding van het apparaat bijwerken: gebruik van pictogrammen gedefinieerd in externe converter (beta)\n",
+        "fr": "Briser le changement : Le démarrage du sous-système zigbee nécessite une entrée de configuration !!!\nPanneau de configuration du matériel\nMise à jour pour convertisseur externe - détecter /dist/ sous-dossier\nMise à jour de l'image du périphérique : utilisation d'icônes définies dans le convertisseur externe (beta)\n",
+        "it": "Cambiamento di rottura: L'avvio del sottosistema zigbee richiede l'ingresso di configurazione !!!\nPannello di configurazione hardware\nAggiornamento per convertitore esterno - rilevare /dist/ subfolder\nImmagine del dispositivo di aggiornamento: uso delle icone definite nel convertitore esterno (beta)\n",
+        "es": "Cambio de ruptura: Inicio del subsistema zigbee requiere entrada de configuración !!!\nPanel de configuración de hardware\nActualización para convertidor externo - detect /dist/ subfolder\nActualizar imagen del dispositivo: uso de iconos definidos en convertidor externo (beta)\n",
+        "pl": "Łamanie zmian: Rozpoczęcie podsystemu Zigbee wymaga wprowadzenia konfiguracji!!!\nPanel konfiguracji sprzętu\nAktualizacja konwertera zewnętrznego - wykryj / dist / subfolder\nAktualizacja obrazu urządzenia: użycie ikon zdefiniowanych w konwerterze zewnętrznym (beta)\n",
+        "uk": "Зміна розривів: Старт підсистеми zigbee вимагає введення конфігурації !!!\nПанель конфігурації обладнання\nОновлення для зовнішнього конвертера - виявлення /dist / підпалювач\nОновлення зображення пристрою: використання ікон, визначених у зовнішній конвертер (beta)\n",
+        "zh-cn": "中断更改 : Zigbee子系统的启动需要配置输入!!!!\n硬件配置面板\n外部转换器更新 - 检测/ dist/ 子文件夹\n更新设备图像: 使用外部转换器( β) 中定义的图标\n"
+      },
+      "2.0.5": {
+        "en": "ZHC 23.6.0\nZH 3.3.x\nremoved extra logging\nfixed memory issue.\nConfigure on Message - 5 attempts.\nupdate transmitPower\nfix crash in ZigbeeController.ByteArrayToString\ndevice designation for  devices without mapped model (allows use in groups and bindings)\n",
+        "de": "ZHC 23.6.0\nZH 3.3.x\nentfernte zusätzliche protokollierung\nfeste speicherausgabe.\nKonfigurieren auf Nachricht - 5 Versuche.\nupdate sendPower\ncrash in ZigbeeController beheben. ByteArrayToString\ngerätebezeichnung für geräte ohne abgebildetes modell (ermöglicht die verwendung in gruppen und bindungen)\n",
+        "ru": "ZHC 23.6.0\nZH 3.3.x\nудаленный дополнительный лес\nпроблемы с памятью.\nНастройка на сообщение - 5 попыток.\nобновление передатчика\nкрушение в ZigbeeController. Разработчик:teArrayToString\nобозначение устройства для устройств без картографической модели (позволяет использовать в группах и привязках)\n",
+        "pt": "ZHC 23.6.0\nZH 3.3.x\nretirada extra\nproblema de memória fixa.\nConfigurar na Mensagem - 5 tentativas.\natualização de energia\ncorrigir acidente em ZigbeeController. Linha de produção\ndesignação do dispositivo para dispositivos sem modelo mapeado (permite o uso em grupos e encadernações)\n",
+        "nl": "ZHC 23.6.0\nZH 3.3.x\nextra loggen verwijderd\nvast geheugen probleem.\nConfigureren op Bericht - 5 pogingen.\nupdate transmitPower\nherstel crash in ZigbeeController. ByteArrayToString\napparaataanduiding voor apparaten zonder in kaart gebracht model (kan worden gebruikt in groepen en bindingen)\n",
+        "fr": "ZHC 23.6.0\nZH 3.3.x\nretrait de l'exploitation supplémentaire\nproblème de mémoire fixe.\nConfigurer sur Message - 5 tentatives.\nmise à jour de transmissionPower\nréparer l'accident dans ZigbeeController. ByteArrayToString\ndésignation de l'appareil pour les dispositifs sans modèle cartographié (permet d'utiliser en groupes et de fixations)\n",
+        "it": "ZHC 23.6.0\nZH 3.3.x\nrimosso extra logging\nproblema di memoria fisso.\nConfigurare su Messaggio - 5 tentativi.\naggiornamento trasmetterePower\nfissare l'incidente a ZigbeeController. ByteArrayToString\ndesignazione del dispositivo per dispositivi senza modello mappato (permette l'uso in gruppi e binding)\n",
+        "es": "ZHC 23.6.0\nZH 3.3.x\nextra de registro\nproblema de memoria fijo.\nConfigurar en el Mensaje - 5 intentos.\ntransmisión de actualizaciónPower\narregla el accidente en ZigbeeController. ByteArrayToString\ndesignación de dispositivos para dispositivos sin modelo mapeado (permite el uso en grupos y encuadernaciones)\n",
+        "pl": "ZHC 23.6.0\nZH 3.3.x\nusunięte dodatkowe logowanie\nproblemy z pamięcią stałą.\nKonfiguracja wiadomości - 5 prób.\ntransmiter aktualizacji Power\nnaprawić wypadek w ZigbeeController. ByteArrayToString\noznaczenie urządzenia dla urządzeń bez mapowanego modelu (pozwala na stosowanie w grupach i wiązaniach)\n",
+        "uk": "ЗХК 23.6.0\nZH 3.3.x\nвидалення додаткового входу\nвиправлено проблему пам'яті.\nНастроювання повідомлення - 5 спроб.\nоновлення трансмісії\nфіксувати аварійну аварійну аварійність в ZigbeeController. ByteArrayToString\nпозначення пристрою для пристроїв без картографічної моделі ( дозволяє використовувати в групах і зв'язках)\n",
+        "zh-cn": "ZHC 23.6.0\nZH 3.3.x 电话\n已删除的额外日志\n固定记忆问题.\n配置信件 - 5 个尝试 .\n更新传输\n修复Zigbee控制器的崩溃。 字节箭头结构\n没有绘图模型的设备指定(分组和捆绑中的允许使用)\n"
+      },
+      "2.0.4": {
+        "en": "back to 2.0.2",
+        "de": "zurück zu 2.0.2",
+        "ru": "вернуться в 2.0.2",
+        "pt": "voltar para 2.0.2",
+        "nl": "terug naar 2.0.2",
+        "fr": "retour à 2.0.2",
+        "it": "torna a 2.0.2",
+        "es": "volver a 2.0.2",
+        "pl": "powrót do 2.0.2",
+        "uk": "до 2.0.2",
+        "zh-cn": "返回到2.0.2"
+      },
+      "2.0.3": {
+        "en": "fix configured info\nfix battery voltage (V -> mV)\nenable debug interface v1.0\nPush Zigbee-Herdsman to 3.5.7\nPush Zigbee-Herdsman-Converters to 23.1.1\nfix configure on message\nremove extra warning messages\nfix Adapter-Checker notes\nimprove base64 image detection\nremoved unused adaptert objects (info.groups, excludes) from adapter config\n",
+        "de": "die konfigurierten informationen\nbatteriespannung fixieren (V -> mV)\ndebug interface v1.0\nPush Zigbee-Herdsman auf 3.5.7\nPush Zigbee-Herdsman-Konverter auf 23.1.1\nkonfigurieren der nachricht\nzusätzliche warnmeldungen entfernen\nfix Adapter-Checker-Noten\nverbesserung der bilderkennung von base64\nentfernte ungenutzte adapterobjekte (info.groups, ausgenommen) von adapter config\n",
+        "ru": "исправить сконфигурированную информацию\nфиксировать напряжение батареи (V -> mV)\nвключить интерфейс отладки v1.0\nПодтолкнуть Зигби-Хердсмана к 3.5.7\nНажмите Zigbee-Herdsman-Converters на 23.1.1\nисправить конфигурацию на сообщение\nудалить дополнительные предупреждающие сообщения\nзаписи Adapter-Checker\nобнаружение изображений base64\nудаленные неиспользуемые объекты адаптера (info.groups, исключает) из конфигурации адаптера\n",
+        "pt": "corrigir informações configuradas\ncorrigir a tensão da bateria (V -> mV)\nenable debug interface v1.0\nEmpurre Zigbee-Herdsman para 3.5.7\nEmpurre Zigbee-Herdsman-Converters para 23.1.1\ncorrigir configurar na mensagem\nremover mensagens de aviso extra\ncorrigir notas Adapter-Checker\nmelhorar a detecção de imagem base64\nremoveu objetos adaptadores não utilizados (info.groups, exclui) da configuração do adaptador\n",
+        "nl": "fix geconfigureerde informatie\nvast te stellen batterijspanning (V -> mV)\ndebug interface v1.0 inschakelen\nDuw Zigbee-Herdsman naar 3.5.7\nDuw Zigbee-Herdsman-Converters naar 23.1.1\nfix configureren op bericht\nextra waarschuwingsberichten verwijderen\nfix Adapter-Checker notities\nverbeteren base64 beelddetectie\nverwijderd ongebruikte adapter objecten (info.groups, exclusief) uit adapter config\n",
+        "fr": "correction des informations configurées\ncorrection de la tension de la batterie (V -> mV)\nactive l'interface debug v1.0\nPoussez Zigbee-Herdsman à 3.5.7\nPousser Zigbee-Herdsman-Converters à 23.1.1\ncorrection de configuration sur le message\nsupprimer les messages d'avertissement supplémentaires\ncorrection des notes de l'adaptateur-vérificateur\naméliorer la détection d'image de base64\nobjets de l'adaptateurt supprimés (info.groups, exclut) de la configuration de l'adaptateur\n",
+        "it": "correzione delle informazioni configurate\ncorreggere la tensione della batteria (V -> mV)\nabilitare l'interfaccia di debug v1.0\nSpingere Zigbee-Herdsman a 3.5.7\nSpingere Zigbee-Herdsman-Converters a 23.1.1\ncorrezione configurare sul messaggio\nrimuovere i messaggi di avviso extra\nfissare le note dell'adattatore-Checker\nmigliorare il rilevamento delle immagini base64\nrimosso oggetti adattatori non utilizzati (info.groups, esclude) dalla configurazione dell'adattatore\n",
+        "es": "fijar información configurada\ntensión de batería de fijación (V - título mV)\nhabilitar interfaz de depuración v1.0\nEmpuja Zigbee-Herdsman a 3.5.7\nEmpuja Zigbee-Herdsman-Converters a 23.1.1\nfijar configuración en el mensaje\neliminar mensajes de advertencia extra\nfijar las notas de Adaptador-Checker\nmejorar la detección de imágenes base64\nobjetos de adaptador no usados (info.groups, excluye) de configuración de adaptador\n",
+        "pl": "naprawić skonfigurowane informacje\nstałe napięcie akumulatora (V - > mV)\nwłącz interfejs debugowania v1.0\nPush Zigbee-Herdsman do 3.5.7\nPush Zigbee- Herdsman- Konwertery do 23.1.1\nustaw konfigurację na wiadomości\nusuwa dodatkowe komunikaty ostrzegawcze\nfix Adapter- Notatki kontrolne\npoprawa wykrywania obrazu bazowego64\nusunięte niewykorzystane obiekty adaptert (info.groups, excluses) z konfiguracji adaptera\n",
+        "uk": "виправлено налаштовану інформацію\nфіксатор напруги акумулятора (В -> мВ)\nувімкнути інтерфейс налагодження v1.0\nPush Zigbee-Herdsman до 3.5.7\nPush Zigbee-Herdsman-Converters до 23.1.1\nфіксувати налаштування на повідомлення\nвидалити додаткові повідомлення попередження\nвиправити адаптер-Checker ноти\nполіпшення базового64 виявлення зображень\nвидалити невикористані об'єкти адаптера (info.groups, виключає) з налаштування адаптера\n",
+        "zh-cn": "修复已配置的信息\n固定电池电压(V - > mV)\n启用调试接口 v1.0\n将Zigbee-Herdsman推至3.5.7\n将Zigbee-Herdsman-Convers推向23.1.1\n固定信件的配置\n删除额外的警告信件\n修正适配器检查符\n改进基本64图像检测\n从适配器配置中删除未使用的适配对象( 信息组, 排除)\n"
+      },
+      "2.0.2": {
+        "en": "fix expose generation with expose function requiring a device. (Issue #1842)\nfix failure to configure for devices needing multiple configurations (Issue #2375)\nfix hold/release and press/release action handling (Issue #2387)\nfix lib/legacy requirement for external converters (Issue #2376)\nimproved external converter handling\nfix OTA bug\nimproved message handling for devices which report values outside their defined ranges\npreparation for ZHC 22.x (model definition loaded on demand\nfix legacy definition for devices\nadded action state for remotes.\n",
+        "de": "fix exponieren Erzeugung mit exponierender Funktion, die ein Gerät benötigt. (Ausgabe #1842)\nfehler beim Konfigurieren von Geräten, die mehrere Konfigurationen benötigen (Issue #2375)\nfix Hold/Release und Presse/Release-Action-Handling (Issue #2387)\nfix lib/legacy Anforderung für externe Konverter (Issue #2376)\nverbesserte externe konverterhandhabung\noTA Fehler beheben\nverbesserte nachrichtenbehandlung für geräte, die werte außerhalb ihrer definierten bereiche melden\nvorbereitung auf ZHC 22.x (Modelldefinition geladen auf Anfrage\nfix legacy definition für geräte\nden aktionszustand für remotes hinzugefügt.\n",
+        "ru": "исправить генерацию экспозиции с функцией экспозиции, требующей устройства. (Выпуск #1842)\nисправление неисправности настройки для устройств, нуждающихся в нескольких конфигурациях (выпуск No 2375)\nфиксация удержания/выпуска и обработки нажатия/выпуска (выпуск No 2387)\nтребование к фиксации lib/legacy для внешних преобразователей (выпуск No 2376)\nулучшенная внешняя обработка конвертера\nисправить ошибку OTA\nулучшенная обработка сообщений для устройств, которые сообщают значения за пределами своих определенных диапазонов\nподготовка к ZHC 22.x (определение модели, загруженное по требованию)\nисправить устаревшее определение для устройств\nдобавлено состояние действия для пультов.\n",
+        "pt": "corrigir a geração de exposição com a função de exposição que requer um dispositivo. (Issue #1842)\ncorrigir a falha de configurar para dispositivos que precisam de múltiplas configurações (Issue #2375)\ncorrigir o manuseio de ação de espera/lançamento e press/lançamento (Issue #2387)\ncorreção lib/legacy exigência para conversores externos (Issue #2376)\nmelhor desempenho do conversor externo\ncorrigir o erro OTA\nmelhor manuseio de mensagens para dispositivos que relatam valores fora de suas gamas definidas\npreparação para ZHC 22.x (definição modelo carregada sob demanda\ncorrigir a definição de legado para dispositivos\nestado de ação adicionado para controles remotos.\n",
+        "nl": "fix ontmaskering generatie met ontmaskering functie vereist een apparaat. (Issue # 1842)\nvast te stellen fout bij het configureren van apparaten die meerdere configuraties nodig hebben (Issue #2375)\nfix hold/release and pers/release action handling (Issue #2387)\nfix lib/legacy eis voor externe converters (Issue #2376)\nverbeterde externe converterbehandeling\nfix OTA bug\nverbeterde berichtverwerking voor apparaten die waarden rapporteren buiten hun gedefinieerde bereik\nvoorbereiding voor ZHC 22.x (modeldefinitie op aanvraag geladen\nfix legacy definitie voor apparaten\ntoegevoegde actiestatus voor remotes.\n",
+        "fr": "fixer la génération d'exposition avec la fonction d'exposition nécessitant un dispositif. (Numéro 1842)\ncorrection de l'échec à configurer pour les appareils nécessitant plusieurs configurations (Numéro #2375)\nfixer la tenue/la sortie et la prise en charge par la presse/la sortie (numéro d'émission 2387)\nfixer lib / légataire exigence pour les convertisseurs externes (Émission #2376)\namélioration de la manipulation du convertisseur externe\ncorrection du bug OTA\namélioration du traitement des messages pour les appareils qui déclarent des valeurs en dehors de leurs plages définies\npréparation pour ZHC 22.x (définition du modèle chargé sur demande\nfixer la définition du passé pour les appareils\nétat d'action ajouté pour les télécommandes.\n",
+        "it": "risolvere esporre la generazione con la funzione di esporre che richiede un dispositivo. (Issue #1842)\ncorretto il mancato configurazione per i dispositivi che necessitano di più configurazioni (Essue #2375)\nfix hold/release e press/release action handling (Issue #2387)\nfix lib/legacy requisito per i convertitori esterni (Issue #2376)\nmigliore gestione del convertitore esterno\ncorrezione di bug OTA\nmigliore gestione dei messaggi per dispositivi che segnalano valori al di fuori dei loro intervalli definiti\npreparazione per ZHC 22.x (definizione modello caricata su richiesta\nfissare la definizione legacy per i dispositivi\nstato di azione aggiunto per i remoti.\n",
+        "es": "fijar la generación expuesta con función expuesta que requiere un dispositivo. (Isue #1842)\nfijar el fallo de configuración para dispositivos que necesitan múltiples configuraciones (Isue #2375)\nfijación de sujeción / liberación y prensa / manejo de acción de liberación (Isue #2387)\nfijar el requisito de lib/legacy para convertidores externos (Isue #2376)\nmejor manejo del convertidor externo\ncorrección de OTA\nmejorar el manejo de mensajes para dispositivos que reportan valores fuera de sus rangos definidos\npreparación para ZHC 22.x (definición modelo cargada a la demanda\nfijar la definición heredada para los dispositivos\nestado de acción añadido para los remotos.\n",
+        "pl": "naprawić generowanie ekspozycji z funkcją odsłaniania wymagającą urządzenia. (Wydanie # 1842)\nnaprawić awarię konfiguracji dla urządzeń wymagających wielu konfiguracji (wydanie # 2375)\nfix hold / release and press / release action handling (wydanie # 2387)\nfix lib / last requirement for external konwerters (issue # 2376)\nulepszona obsługa zewnętrznego konwertera\nnaprawić błąd OTA\nulepszona obsługa wiadomości dla urządzeń, które przekazują wartości poza określonymi zakresami\nprzygotowanie do ZHC 22.x (definicja modelu załadowana na żądanie\nnaprawić dotychczasową definicję urządzeń\ndodano stan działania pilotów.\n",
+        "uk": "фіксувати генерацію висадки з функцією вистоювання, що вимагає пристрою. (Issue #1842)\nвиправлена відмова налаштовувати для пристроїв, які потребують декількох конфігурацій (Issue #2375)\nфіксувати передачу/випуск та прес/випуск дії (Issue #2387)\nфіксувати вимогу lib/legacy для зовнішніх перетворювачів (Issue #2376)\nпокращений зовнішній конвертер\nвиправлення помилок OTA\nпокращена обробка повідомлень для пристроїв, які повідомляють значення поза визначеними діапазонами\nпідготовка до ZHC 22.x (модельне визначення, завантажене на попит\nфіксувати визначення спадщини для пристроїв\nдодано стан дії для пультів.\n",
+        "zh-cn": "固定需要设备的曝光函数的曝光生成。 (问题1842)\n为需要多个配置的设备设置固定失败( 问题 # 2375)\n固定持有/释放和按压/释放处理(第2387号问题)\n固定外部转换器的 lib/ legacy 要求(问题 # 2376)\n改进外部转换器处理\n修复OTA 错误\n改进对报告超出规定范围值的设备的信息处理\nzHC 22.x(按要求装入的模型定义)\n固定设备的遗留定义\n为远程添加动作状态 .\n"
+      },
       "2.0.1": {
         "en": "BREAKING CHANGES\n\nswitch to converters 21 changes the exposes for a large numbern of devices (mostly remotes)\nnew method for controlling color based on subchannels for rgb, hs and xy\nExposes as default for ALL devices. Use of old definition as option only\nRequires Node 20.x or newer\n\nFix Pairing\nchange ping\ndelay map generation until refresh is activated, map messages after generation\nremove bindings tab from zigbee tab\nreorder tabs in configuration\nremove binding tab from configuration\nremove map from configuration\nadd debug to zigbee tab\nHerdsman 3.2.5, Converters 21.30.0\nExposes as default, use of old device definitions as legacy optional\nUser specific images (model based, device based)\nImproved group editing - remove members from group card",
         "de": "VERÄNDERUNGEN\n\nschalter auf konverter 21 ändert die belichtung für eine große anzahl von geräten (meist fernbedienungen)\nneue methode zur farbsteuerung auf basis von subkanälen für rgb, hs und xy\nExposes als Standard für ALL Geräte. Verwendung der alten Definition nur als Option\nErfordert Node 20.x oder neuer\n\nFeste Paarung\nänderung ping\nverzögerung der kartenerzeugung, bis das update aktiviert ist, kartennachrichten nach generation\nbinden tab aus zickbee tab entfernen\nreorder tabs in konfiguration\nbindelasche aus der konfiguration entfernen\nkarte aus der konfiguration entfernen\ndebug to zigbee tab hinzufügen\nHerdsman 3.2.5, Konverter 21.30.0\nExposes als Standard, Verwendung von alten Gerätedefinitionen als Vermächtnis optional\nBenutzerspezifische Bilder (modellbasierte, gerätebasierte)\nVerbesserte Gruppenbearbeitung - Mitglieder aus Gruppenkarte entfernen",
@@ -15,71 +93,6 @@
         "pl": "ZMIANY ZBIORCZE\n\nprzełączanie na konwertery 21 zmienia eksponaty dużej liczby urządzeń (głównie pilotów)\nnowa metoda kontrolowania koloru na podstawie podkanałów dla rgb, hs i xy\nWyświetla jako domyślne dla urządzeń ALL. Używanie starej definicji jako opcji\nWymaga węzła 20.x lub nowsze\n\nNapraw parowanie\nzmienić ping\nopóźnianie generowania mapy aż do uruchomienia odświeżania, wiadomości mapy po generacji\nusunąć zakładkę wiązania z zakładki zigbee\nponownie zamówić karty w konfiguracji\nusunąć zakładkę wiązania z konfiguracji\nusuń mapę z konfiguracji\ndodaj debug do karty zigbee\nHerdsman 3.2.5, Konwertery 21.30.0\nWyświetla jako domyślne, użycie starych definicji urządzenia jako dotychczasowe opcjonalne\nObrazy specyficzne dla użytkownika (oparte na modelu, na urządzeniu)\nUlepszona edycja grupowa - usunąć członków z karty grupowej",
         "uk": "БРЕАКІНГОВІ ЗМІНИ\n\nперемикач на перетворювачі 21 змінює висадки для великої кількості пристроїв (найбільш віддалені)\nновий метод контролю кольору на основі підканалів для rgb, hs і xy\nЗа замовчуванням для всіх пристроїв. Використання старого визначення як варіант\nВимагає Node 20.x або нові\n\nФіксація Пірсинг\nзмінити пінг\nгенерація карти затримки до освіження активується, повідомлення після генерації\nвидалити вкладку в'язання з вкладки zigbee\nвкладка зворотного замовлення в конфігурації\nвидалити вкладку з конфігурації\nвидалити карту з конфігурації\nadd debug до zigbee tab\nEnglish, Українська, Français..\nЕкспози як за замовчуванням, використання застарілих параметрів пристрою, як необов'язковий\nКористувальницькі специфічні зображення (моделі на основі пристрою)\nУдосконалено редагування груп - видалення членів з групової картки",
         "zh-cn": "裂变\n\n21 更改大量设备(大多为远程设备)的曝光量\n基于 rgb、 hs 和 xy 子通道的新的颜色控制方法\n曝光为默认所有设备 。 仅将旧定义用作选项\n需要节点 20.x 或更新\n\n修复对齐\n更改键\n将映射生成延迟到刷新启动, 映射消息生成后\n从 zigbee 标签中删除绑定标签\n在配置中重新排序标签\n从配置中删除绑定标签\n从配置中删除地图\n添加调试到 zigbee 标签\n牧民 3.2.5,转换器 21.30.0\n将曝光作为默认, 将旧设备定义作为遗留选项\n用户特定图像( 基于模型、 设备)\n改进组编辑 - 从组卡中删除成员"
-      },
-      "1.11.2": {
-        "en": "debug for states",
-        "de": "debug for states",
-        "ru": "debug for states",
-        "pt": "debug for states",
-        "nl": "debug for states",
-        "fr": "debug for states",
-        "it": "debug for states",
-        "es": "debug for states",
-        "pl": "debug for states",
-        "uk": "debug for states",
-        "zh-cn": "debug for states"
-      },
-      "1.10.14": {
-        "en": "Herdsman 2.1.9, Converters 20.58.0\nFix: Aqara T1M (CL-L02D) \ndeleteDeviceStates change to deleteObj",
-        "de": "Herdsman 2.1.9, Konverter 20.58.0\nFix: Aqara T1M (CL-L02D)\nlöschen DeviceState Änderung zum Löschen Ob",
-        "ru": "Herdsman 2.1.9, Converters 20.58.0\nFix: Aqara T1M (CL-L02D)\nудалить Устройства меняются для удаления Obj",
-        "pt": "Herdsman 2.1.9, Conversores 20.58.0\nFix: Aqara T1M (CL-L02D)\nexcluir DeviceStates mudam para excluir Objecção",
-        "nl": "Herdsman 2.1.9, Converters 20.58.0\nFix: Aqara T1M (CL-L02D)\nverwijderen Apparaatstaten wijzigen om te verwijderen Obj",
-        "fr": "Herdsman 2.1.9, Convertisseurs 20.58.0\nCorrection: Aqara T1M (CL-L02D)\nsupprimer Les états de périphérique changent pour supprimer OBJ",
-        "it": "Herdsman 2.1.9, Convertitori 20.58.0\nFisso: Aqara T1M (CL-L02D)\ncancella DeviceStates modifica per eliminare Obj",
-        "es": "Herdsman 2.1.9, convertidores 20.58.0\nFijación: Aqara T1M (CL-L02D)\nborrar Los Estados de dispositivos cambian para eliminar Obj",
-        "pl": "Herdsman 2.1.9, konwertery 20.58.0\nFix: Aqara T1M (CL- L02D)\nusuń DeviceStates zmienić, aby usunąć Obj",
-        "uk": "Herdsman 2.1.9, Конвертер 20.58.0\nФіксація: Aqara T1M (CL-L02D)\nвидалити Зміна стану пристроїв для видалення Офіціант",
-        "zh-cn": "牧民2.1.9,转换器 20.58.0\n修补:Aqara T1M(CL-L02D)\n删除 设备状态更改以删除 欧比"
-      },
-      "1.10.13": {
-        "en": "corr icon download bug (axios)",
-        "de": "corr icon download bug (axios)",
-        "ru": "значок скачать bug (axios)",
-        "pt": "corr ícone de download bug (eixos)",
-        "nl": "corr pictogram download bug (axios)",
-        "fr": "corr icône de téléchargement bug (axios)",
-        "it": "corr icon download bug (assios)",
-        "es": "corr icono descargar bug (axios)",
-        "pl": "corr ikona pobierz błąd (axios)",
-        "uk": "корр іконки завантажити помилку (axios)",
-        "zh-cn": "corr 图标下载错误( axios)"
-      },
-      "1.10.12": {
-        "en": "corr Channel Scan",
-        "de": "corr Channel Scan",
-        "ru": "корректор канала",
-        "pt": "escaneamento do canal de cortiça",
-        "nl": "corr kanaalscan",
-        "fr": "balayage du canal corr",
-        "it": "corr Channel Scansione",
-        "es": "corr Channel Scan",
-        "pl": "corr Channel Scan",
-        "uk": "сканування каналу",
-        "zh-cn": "频道扫描"
-      },
-      "1.10.11": {
-        "en": "BREAKING CHANGE\n\nbugs : ChannelScan is currently not available\n\n\nfix linter errors\ndisable map display for deactivated devices\nnew option on map: disable physics interaction\nnew zigbee-herdsman-converters 20.28.0\nnew zigbee-herdsman 2.1.1\nAllow use of keyless converters (used for TuYa and compatible devices in zigbee-herdsman-converters\nswap from request to axios\ndelete groups works again",
-        "de": "VERWENDUNGSBEREICH\n\nbugs : ChannelScan ist derzeit nicht verfügbar\n\n\nlinterfehler beheben\nkartenanzeige für deaktivierte geräte deaktivieren\nneue option auf der karte: physik-interaktion deaktivieren\nneue zickbee-herdsman-konverter 20.28.0\nneuer zickbee-herdsman 2.1.1\nVerwenden von schlüssellosen Wandlern (für TuYa und kompatible Geräte in Zickbee-herdsman-Konverter verwendet)\nswap von anfrage an axios\nlöschen von gruppen funktioniert wieder",
-        "ru": "ОБМЕН\n\nжуки: ChannelScan в настоящее время не доступен\n\n\nисправление ошибок\nотключить отображение карты для деактивированных устройств\nновый вариант на карте: отключить взаимодействие физики\n20.28.0\n2.1.1\nПозволить использовать бесключевые конвертеры (используемые для TuYa и совместимые устройства в zigbee-herdsman-конвертерах\nсвопа от запроса к axios\nудалить группы снова",
-        "pt": "ALTERAÇÕES DE TRABALHO\n\nbugs : ChannelScan não está disponível\n\n\ncorrigir erros do linter\ndesativar a exibição do mapa para dispositivos desativados\nnova opção no mapa: desativar a interação física\nnovos conversores de zigbee-herdsman 20.28.0\nnovo zigbee-herdsman 2.1.1\nPermitir o uso de conversores sem chave (usado para TuYa e dispositivos compatíveis em conversores de zigbee-herdsman\nswap de pedido para axios\nexcluir grupos funciona novamente",
-        "nl": "BREAKING VERANDERING\n\nbugs: ChannelScan is momenteel niet beschikbaar\n\n\nrepareren linter fouten\nkaartweergave voor gedeactiveerde apparaten uitschakelen\nnieuwe optie op de kaart: interactie natuurkunde uitschakelen\nnieuwe zigbee-herdsman-converters 20.28.0\nnieuwe zigbee-herdsman 2.1.1\nGebruik van sleutelloze converters toestaan (gebruikt voor TuYa en compatibele apparaten in zigbee-herdsman-converters\nruil van verzoek naar axios\ngroepen opnieuw verwijderen",
-        "fr": "CHANGEMENT DE BREAING\n\nbugs : ChannelScan n'est actuellement pas disponible\n\n\ncorrection des erreurs linter\ndésactiver l'affichage de la carte pour les appareils désactivés\nnouvelle option sur la carte: désactiver l'interaction physique\nnouveaux convertisseurs zigbee-herdsman 20.28.0\nnouveau zigbee-herdsman 2.1.1\nPermettre l'utilisation de convertisseurs sans clé (utilisés pour TuYa et appareils compatibles dans les convertisseurs zigbee-herdsman-converters\néchange de la demande à l'axios\nsupprimer les groupes fonctionne à nouveau",
-        "it": "CAPITOLO DI RICERCA\n\nbugs: ChannelScan non è attualmente disponibile\n\n\ncorreggere gli errori di linter\ndisabilitare la visualizzazione della mappa per i dispositivi disattivati\nnuova opzione sulla mappa: disabilitare l'interazione fisica\nnuovo zigbee-herdsman-converters 20.28.0\nnuovo zigbee-herdsman 2.1.1\nConsentire l'uso di convertitori senza chiave (utilizzati per TuYa e dispositivi compatibili in zigbee-herdsman-converter\nswap da richiesta a assios\ncancellare i gruppi funziona di nuovo",
-        "es": "BREAKING CHANGE\n\nbugs : ChannelScan actualmente no está disponible\n\n\ncorrige errores de invierno\npantalla de mapa deshabilitado para dispositivos desactivados\nnueva opción en el mapa: la interacción física deshabilitada\nnuevos zigbee-herdsman-converters 20.28.0\nnuevo zigbee-herdsman 2.1.1\nPermitir el uso de convertidores sin llave (utilizados para TuYa y dispositivos compatibles en zigbee-herdsman-converters\nswap from request to axios\neliminar grupos funciona de nuevo",
-        "pl": "ZMIANA ZBIORCZA\n\nbłędy: ChannelScan jest obecnie niedostępny\n\n\nnaprawić błędy lintera\nwyłączyć wyświetlacz mapy dla wyłączonych urządzeń\nnowa opcja na mapie: wyłączenie interakcji fizyki\nnowe konwertery zigbee- herdsman- 20.28.0\nnowy zigbee-herdsman 2.1.1\nZezwalaj na stosowanie konwerterów bezklawiszowych (używanych dla TuYa i kompatybilnych urządzeń w konwerterach zigbee- herdsman-\nzamiana z wniosku na aksjos\nusuń grupy działa ponownie",
-        "uk": "БРЕАКІНГ ЗМІН\n\nпомилки : CanalScan наразі немає\n\n\nвиправлено помилки linter\nвідключення відображення карти для деактивованих пристроїв\nновий варіант на карті: відключена фізика взаємодія\nнові zigbee-herdsman-converters 20.28.0\nновий zigbee-herdsman 2.1.1\nДозволити використання без ключів конвертерів (використовується для TuYa та сумісних пристроїв в zigbee-herdsman-converters\nковтання від запиту в осях\nвидалити групи знову",
-        "zh-cn": "破坏变化\n\n错误 : 频道扫描目前不可用\n\n\n修正线性错误\n禁用已停用设备的地图显示\n地图上的新选项: 禁用物理交互\n新齐格比-牧民-转换器 20.28.0\n新齐格比牧民 2.1.1\n允许使用无密钥转换器( 用于 TuYa 和 Zigbee- herdsman- 转换器中的兼容设备)\n从请求转换为轴\n再次删除组工作"
       }
     },
     "titleLang": {
@@ -146,6 +159,7 @@
       "tab": "materialize"
     },
     "messagebox": true,
+    "stopTimeout": 30000,
     "stopBeforeUpdate": true,
     "dataFolder": "zigbee_%INSTANCE%",
     "compact": true,
@@ -174,7 +188,7 @@
     },
     "globalDependencies": [
       {
-        "admin": ">=5.1.25"
+        "admin": ">=7.4.10"
       }
     ],
     "dependencies": [
@@ -235,13 +249,12 @@
           "cancel"
         ]
       }
-    ],
-    "installedFrom": "asgothian/ioBroker.zigbee#1.11"
+    ]
   },
   "native": {
     "port": "",
-    "panID": 6754,
-    "extPanID": "DDDDDDDDDDDDDDDD",
+    "panID": 0,
+    "extPanID": "",
     "channel": 11,
     "disableLed": false,
     "precfgkey": "01030507090B0D0F00020406080A0C0D",
@@ -254,30 +267,10 @@
     "startWithInconsistent": false,
     "warnOnDeviceAnnouncement": true,
     "baudRate": 115200,
-    "flowCTRL": false
+    "flowCTRL": false,
+    "autostart": false
   },
   "instanceObjects": [
-    {
-      "_id": "exclude",
-      "type": "channel",
-      "common": {
-        "name": "exclude devs from devices.js"
-      },
-      "native": {}
-    },
-    {
-      "_id": "exclude.all",
-      "type": "state",
-      "common": {
-        "role": "state",
-        "name": "all",
-        "type": "string",
-        "read": true,
-        "write": true,
-        "def": "[]"
-      },
-      "native": {}
-    },
     {
       "_id": "info",
       "type": "channel",
@@ -331,19 +324,6 @@
       "common": {
         "role": "indicator",
         "name": "Pairing message",
-        "type": "string",
-        "read": true,
-        "write": false,
-        "def": ""
-      },
-      "native": {}
-    },
-    {
-      "_id": "info.groups",
-      "type": "state",
-      "common": {
-        "role": "state",
-        "name": "Groups",
         "type": "string",
         "read": true,
         "write": false,

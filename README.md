@@ -9,14 +9,15 @@
 [![Translation status](https://weblate.iobroker.net/widgets/adapters/-/zigbee/svg-badge.svg)](https://weblate.iobroker.net/engage/adapters/?utm_source=widget)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.zigbee.svg)](https://www.npmjs.com/package/iobroker.zigbee)
 
-## ioBroker adapter for Zigbee devices via TI cc2531/cc2530/cc26x2r/cc2538 and deCONZ ConBee/RaspBee.
+## ioBroker adapter for Zigbee devices via Zigbee coordinator hardware.
 
-With the Zigbee-coordinator based on Texas Instruments SoC, deCONZ ConBee/RaspBee modules, Silicon Labs EZSP v8 or ZIGate USB-TTL it creates its own zigbee-network, into which zigbee-devices are connected. By work directly with the coordinator, the driver allows you to manage devices without additional application / gateways / bridge from device manufacturers (Xiaomi / TRADFRI / Hue / Tuya). About the device Zigbee-network can be read [here (in English)](https://www.zigbee2mqtt.io/information/zigbee_network.html).
+Using specialized Zigbee-coordinator hardware, the adapter creates and manages a Zigbee Network which can control and connect a large number of Zigbee Devices. The list of compatible devices inlcudes > 4000 devices from > 450 different vendors. The number of devices in the network depends on the available coordinator hardware. Common coordinator hardware are USB sticks with Texas Instruments CC26xx, Silicon Labs EZSP or ZIGate chipsetz. Some branded USB devices (Sonoff ZB-Dongle, Dresden Electronic Conbee) can also be used. There are also network-based hubs from various manufacturers.
+
+By working directly with the coordinator, the driver allows you to manage devices without additional application / gateways / bridge from device manufacturers (Xiaomi / TRADFRI / Hue / Tuya). More information about the  Zigbee-network can be read [here (in English)](https://www.zigbee2mqtt.io/information/zigbee_network.html).
 
 ## Hardware
 
-
-One coordinator device is required for each zigbee Adapter instance. The device must be flashed with the respective coordinator firmware. A list of supported coordinators, the necessary equipment for the firmware and the device preparation process for different coordinator devices are described [here in English](https://www.zigbee2mqtt.io/guide/adapters/) or [smarthomescene.com ](https://smarthomescene.com/blog/best-zigbee-dongles-for-home-assistant-2023/) or [here in Russian](https://myzigbee.ru/books/%D0%BF%D1%80%D0%BE%D1%88%D0%B8%D0%B2%D0%BA%D0%B8/page/%D0%BF%D1%80%D0%BE%D1%88%D0%B8%D0%B2%D0%BA%D0%B0-cc2531cc2530)
+One coordinator device is required for each Zigbee Adapter instance. The device must be flashed with the respective coordinator firmware. A list of supported coordinators, the necessary equipment for the firmware and the device preparation process for different coordinator devices are described [here in English](https://www.zigbee2mqtt.io/guide/adapters/) or [smarthomescene.com ](https://smarthomescene.com/blog/best-zigbee-dongles-for-home-assistant-2023/) or [here in Russian](https://myzigbee.ru/books/%D0%BF%D1%80%D0%BE%D1%88%D0%B8%D0%B2%D0%BA%D0%B8/page/%D0%BF%D1%80%D0%BE%D1%88%D0%B8%D0%B2%D0%BA%D0%B0-cc2531cc2530)
 
 
 ### Texas Instruments SoC
@@ -31,95 +32,114 @@ Current firmware files for these devices can be found [on GitHub](https://github
 <span><img src="https://raw.githubusercontent.com/ioBroker/ioBroker.zigbee/master/docs/de/img/CC2538_CC2592_PA.PNG" width="100"></span>
 <span><img src="https://raw.githubusercontent.com/ioBroker/ioBroker.zigbee/master/docs/de/img/cc26x2r.PNG" width="100"></span>
 
-tutorial/zigbee.png
 ### Dresden Elektronik SoC
 <span><img src="https://raw.githubusercontent.com/ioBroker/ioBroker.zigbee/master/docs/en/img/deconz.png" width="180"></span>
 
-recommended:
-- ConBee II
-- RaspBee II
+As of May 2025, raspbee and conbee variants are no longer recommended, as the code is no longer actively maintained and has fallen behind the other variants with regards to functionality.
 
-no longer recommended:
-- ConBee I
-- RaspBee
-
-While Conbee/RaspBee Support is no longer considered experimental in the zigbee-herdsman and zigbee-herdsman-converters libraries used by the zigbee Adapter, use of these devices with the adapter may limit functionality. Known issues are:
+Conbee/RaspBee Support is no longer considered experimental in the zigbee-herdsman and zigbee-herdsman-converters libraries used by the zigbee Adapter, use of these devices with the adapter may limit functionality. Known issues are:
 - link quality display may be incorrect
 - device map metrics may be incorrect
 - NVRam Backup is not supported.
+- channel change is not supported.
 
 ### Silicon Labs SoC
 
-Support for [Silicon Lab Zigbee](https://www.silabs.com/wireless/zigbee) based adapters is experimental. The initial support for EZSP v8 is still not yet considered stable and the project is in need of more developers volunteering to help with this integration. Please refer to the respective documentation on [this page](https://www.zigbee2mqtt.io/guide/adapters/) and [ongoing development discussion](https://github.com/Koenkk/zigbee-herdsman/issues/319) with regards to the state of Silabs EmberZNet Serial Protocol (EZSP) adapter implementation integration into the zigbee-herdsman and zigbee-herdsman-converters libraries which it depends on.
+Support for [Silicon Lab Zigbee](https://www.silabs.com/wireless/zigbee) based adapters is experimental. The initial support for EZSP v8 is still not yet considered stable, and the project is in need of more developers volunteering to help with this integration. Please refer to the respective documentation on [this page](https://www.zigbee2mqtt.io/guide/adapters/) and [ongoing development discussion](https://github.com/Koenkk/zigbee-herdsman/issues/319) with regards to the state of Silabs EmberZNet Serial Protocol (EZSP) adapter implementation integration into the zigbee-herdsman and zigbee-herdsman-converters libraries which it depends on.
 
 
 ### ZiGate SoC
 
-Support for [ZiGate](https://zigate.fr) based adapters is experimental. The initial support for ZiGate is still not yet considered stable and the project is in need of more developers volunteering to help with this integration. Please refer to the respective documentation on [this page](https://www.zigbee2mqtt.io/guide/adapters/) and [ongoing development discussion](https://github.com/Koenkk/zigbee-herdsman/issues/242) with regards to the state of ZiGate adapter implementation into the zigbee-herdsman and zigbee-herdsman-converters libraries which it depends on.
+Support for [ZiGate](https://zigate.fr) based adapters is experimental. The initial support for ZiGate is still not yet considered stable, and the project is in need of more developers volunteering to help with this integration. Please refer to the respective documentation on [this page](https://www.zigbee2mqtt.io/guide/adapters/) and [ongoing development discussion](https://github.com/Koenkk/zigbee-herdsman/issues/242) with regards to the state of ZiGate adapter implementation into the zigbee-herdsman and zigbee-herdsman-converters libraries which it depends on.
 
 
-## Work with adapter
+## Getting started
 
-![](docs/tutorial/zigbee.png)
+The adapter should **always** be installed from within the ioBroker Admin. Direct npm and GitHub installations are **not recommended**.
 
-To start the driver, you must specify the name of the port on which the Zigbee-module (stick) is connected. Usually this is the port `/dev/ttyACM0` or `/dev/ttyUSB0` for the UART-connection. Or you can find with `ls -l /dev/serial/by-id` the device direct.
-
-open the settings and change port
-![](docs/tutorial/settings.png)
-
-
-For Windows this will be the COM port number.
-
-Starting from version 1.0.0 you can also use *tcp connection* for cases using esp8266 (or other microcontrollers) as serial-bridge. For example `tcp://192.168.1.46:8880`. Read more info here https://www.zigbee2mqtt.io/information/connecting_cc2530#via-an-esp8266
-
-To connect devices, you need to switch the Zigbee-coordinator to pairing mode by pressing the green button. The countdown will begin (60 seconds) until the device connectivity is available.
-To connect Zigbee devices in most cases, just press the pairing button on the device itself. But there are features for some devices. More information about pairing with devices can be found [here (in English)](https://www.zigbee2mqtt.io/getting_started/pairing_devices.html)
-
-After successful pairing, the device appears in the configuration panel. If the device appears in the configuration panel but has the type "undefined", then this is an unknown device and can not be work with it. If the device is in the list of available devices, but added as "undefined", then try to remove the device and add it again.
-
-The devices connected to the Zigbee-network and inform the coordinator of their status and events (button presses, motion detection, temperature change). This information is reflected in the ioBroker object-states. Some ioBroker states have feedback and send commands to the zigbee-device when the value changes (switching the state of the outlet or lamp, changing the scene or the brightness of the lamp).
-
-### Device Groups
-You may create groups of devices.
-
-![](docs/tutorial/groups-1.png)
-
-It is a Zigbee feature, intended for example to switch bulbs synchronized. Assign groups via device tabs edit button. A group will show as own "device" in Objects.
-
-![](docs/tutorial/groups-2.png)
-
-Note: Not all devices support groups (not supported by end devices like sensors).
+At first start, it is vital to set up the adapter settings. These include:
+- the communication to the zigbee Coordinator (COM Port). This can be a device identifier or a network address for Network-based coordinators
+- the required firmware-Type
+- the network parameters PanID (a number between 0 and 65565), extended PanID (a 16 digit HEX number) and the zigbee Channel **important: Do not run the adapter without changing the values for PanID (6754) and Extended PanID (DDDDDDDDDDDDDDDD) to unique values for your Zigbee Installation.**
 
 
-### Binding
+![](docs/en/img/Zigbee_config_en.png)
 
-https://www.zigbee2mqtt.io/information/binding
+The *Test Port* and *Star/Stop* buttons are provided to test the settings.
 
-### Developer Tab
+**Once the settings are verified the adapter can be prepared for automatic start by setting the CheckBox *start the zigbee network automatically* and saving the parameters.**
 
-This is a tool for advanced users to test currently unsupported devices or enhance this adapters functionality. More instructions can be found on tab.
-![](docs/tutorial/tab-dev-1.png)
+Please refer to the [in depth documentation](docs/en/readme.md) ([german version](docs/de/readme.md), [russian version](docs/ru/readme.md)) for a detailed explanation on how to configure the adapter.
+
+Once the adapter is up and running, the desired devices need to be integrated into the network. This requires for both the adapter and the device to be in pairing mode. Most new devices will be in pairing-mode when they are powered up for the first time, but some will require a special procedure for this. Please refer to the device manual for information on this.
+
+The adapter is placed in pairing mode by pressing the pairing button:
+![](docs/en/img/Zigbee_pairing_en.png)
+
+A dialog showing a pairing countdown appears. When a new device is discovered, interviewed and paired with the network, messages will be shown in this dialog, and the device will show up in the grid of active devices. Any known device should show up with an image and the correct device name, as well as a number of changable settings. Any unknown device will show up with a device name and a ? as icon, while devices which failed the pairing will show up as 'unknown' with the same ? icon. These should be removed from the network to be paired again. Please refer to the documentation linked above for more details.
+
+## Advanced options
+
+### Groups
+
+The adapter allows for the creation of groups via the 'add group' button. Once a group has been formed, devices can be added to and removed from the group from the device card. Removal is also possible from the group card.
+Groups have the advantage that a single command is sent to control all group members. This is especially helpful when changing the groups brightness and/or color settings.
+Note that not all devices may be added to groups - the device itself needs to support this feature.
+
+Group configuration is available from the device grid.
+
+### Bindings
+
+Bindings can be used to link a remote control directly to a device, like it is e.g. done for the ikea devices. This binding has the advantage that bound devices will continue to work together even if the Zigbee Coordinator is unavailable.
+Note that not all devices may be part of a binding - the devices themselves need to support this feature.
+
+The binding configuration is only available from the zigbee tab
+
+### Network Map
+
+The adapter has the ability to generate a map of the mesh network. This usually takes a few minutes and provides a momentary glimpse into how the devices are meshed with each other.
+
+The network map is only available the zigbee tab.
+
+### Debug information
+
+The Adapter offers to collect debug information for specific devices in order to identify problems in device operation and integration. This needs to be enabled on the desired devices from the device grid.
+
+The debug information is only available from the zigbee tab.
+
+### Local overrides
+
+Device integration can be modified on a *per Model* basis, allowing the user to customise the states associated with the device. Note that before version 2.1.0, this is limited to choosing between the default *expose based* integration and the previous *legacy* integration. More options for customisation are under development.
+
+The local overrides are only available from the instance configuration
+
+### Developer Mode
+
+The developer mode offers the ability to communicate with any paired device solely based on the details of the Zigbee communication rules. Use of this requires an insight into Zigbee Clusters, Attributes and messaging structure. It can be used to control devices which are not currently supported. An in depth desctiption of the developer Tab is available in the documentation.
+
+The developer tab is only available from the instance configuration
+
+
 
 ## Additional info
 
-There is a [friendly project](https://github.com/koenkk/zigbee2mqtt) with similar functionality on the same technologies, where you can work with the same devices using the MQTT protocol. Therefore, if any improvements or support for new zigbee-devices occur in the Zigbee2MQTT project, we can transfer and add the same functionality to this adapter. If you notice this, then write the issue - we'll postpone it.
+There is a [friendly project](https://github.com/koenkk/zigbee2mqtt) with similar functionality which is based on the same technology. It uses the same base libraries for hardware communication and device integration. Any device listed as compatible in this project is likely to be compatible with the ioBroker.zigbee Adapter. Note that there is a delay between device integration into zigbee2mqtt.io and the Zigbee-Adapter, as compatibility with the hardware libraries requires verification before the adapter can move to the latest version.
 
 There are knowledge bases that can be useful for working with Zigbee-devices and equipment:
-* in English https://www.zigbee2mqtt.io/
+* in English https://www.zigbee2mqtt.io/ or https://zigbee.blakadder.com
 * in Russian https://myzigbee.ru/
 
 ## Supported devices
 
-[Works with devices from this list](https://github.com/ioBroker/ioBroker.zigbee/wiki/Supported-devices)
+Pleae refer to [this list](https://www.zigbee2mqtt.io/supported-devices/) to check compatibility. Once a device is listed as compatible there, it is either already compatible with the Zigbee Adapter or can be made compatible using an external converter.
 
-
-## More Informations
+## In Depth Documentation
 
 [in Deutsch](https://github.com/ioBroker/ioBroker.zigbee/blob/master/docs/de/readme.md)
 
 [in English](https://github.com/ioBroker/ioBroker.zigbee/blob/master/docs/en/readme.md)
 
-or 
+or
 
 [wiki](https://github.com/ioBroker/ioBroker.zigbee/wiki)
 
@@ -128,413 +148,147 @@ or
 ## Donate
 
 You can thank the authors by these links:
-* to Kirov Ilya https://www.paypal.me/goofyk
 * to Arthur Rupp https://paypal.me/ArthurRupp
 
 -----------------------------------------------------------------------------------------------------
-
 ## Changelog
-### 1.9.7 (2024-01-05)
-* (arteck) corr configure for some devices
+### 3.0.1 (2025-04-25)
+* (AlexHaxe)  Fix for Ikea SOMRIG configuration raising 'definition.endpoint is not a function' error.
+* (asgothian) Access to 'zigbee2mqtt options as settings in zigbee adapter (ALPHA Stage !)
+* (asgothian) Fix for 'error: zigbee.0 (1118300) zigbee.0 already running' at adapter start (Alpha Stage)
+* (asgothian) Updated hardware configuration panel - exchanged text buttons for buttons with icons.
+* (asgothian) Limited states on device tiles to states which are read only or which can be modified sensibly via the device tile.
+*
+
+### 3.0.0 (2025-04-08)
+* (asgothian) Breaking change: Start of zigbee subsystem requires checking the 'start the Zigbee network automatically' checkbox. !!!
+* (asgothian) Hardware configuration panel
+* (asgothian) Update for external converter - detect /dist/ subfolder
+* (asgothian) Update device image: use of icons defined in external converter (beta)
+*
+
+### 2.0.5 (2025-03-25)
+* (asgothian) ZHC 23.6.0
+* (asgothian) ZH 3.3.x
+* (asgothian) removed extra logging
+* (asgothian) fixed memory issue.
+* (asgothian) Configure on Message - 5 attempts.
+* (arteck) update transmitPower
+* (asgothian) fix crash in ZigbeeController.ByteArrayToString
+* (AlexHaxe) device designation for  devices without mapped model (allows use in groups and bindings)
+*
+
+### 2.0.4 (2025-03-09)
+* (arteck) back to 2.0.2
+
+### 2.0.3 (2025-03-07)
+* (asgothian) fix configured info
+* (asgothian) fix battery voltage (V -> mV)
+* (asgothian) enable debug interface v1.0
+* (asgothian) Push Zigbee-Herdsman to 2.5.7
+* (asgothian) Push Zigbee-Herdsman-Converters to 23.1.1
+* (asgothian) fix configure on message
+* (asgothian) remove extra warning messages
+* (asgothian) fix Adapter-Checker notes
+* (asgothian) improve base64 image detection
+* (asgothian) removed unused adaptert objects (info.groups, excludes) from adapter config
+
+### 2.0.2 (2025-03-02)
+* (asgothian)  expose generation with expose function requiring a device. (Issue #1842)
+* (asgothian) fix failure to configure for devices needing multiple configurations (Issue #2375)
+* (asgothian) fix hold/release and press/release action handling (Issue #2387)
+* (asgothian) fix lib/legacy requirement for external converters (Issue #2376)
+* (asgothian) improved external converter handling
+* (asgothian) fix OTA bug
+* (asgothian) improved message handling for devices which report values outside their defined ranges
+* (asgothian) preparation for ZHC 22.x (model definition loaded on demand
+* (asgothian) fix legacy definition for devices
+* (asgothian) added action state for remotes.
+*
+
+### 2.0.1 (2025-02-25)
+* BREAKING CHANGES
+*
+* switch to converters 21 changes the exposes for a large numbern of devices (mostly remotes)
+* new method for controlling color based on subchannels for rgb, hs and xy
+* Exposes as default for ALL devices. Use of old definition as option only
+* Requires Node 20.x or newer
+*
+* (asgothian) Fix Pairing
+* (asgothian) change ping
+* (asgothian) delay map generation until refresh is activated, map messages after generation
+* (asgothian) remove bindings tab from zigbee tab
+* (asgothian) reorder tabs in configuration
+* (asgothian) remove binding tab from configuration
+* (asgothian) remove map from configuration
+* (asgothian) add debug to zigbee tab
+* (asgothian) Herdsman 3.2.5, Converters 21.30.0
+* (asgothian) Exposes as default, use of old device definitions as legacy optional
+* (asgothian) User specific images (model based, device based)
+* (asgothian) Improved group editing - remove members from group card
+
+### 1.10.14 (2025-01-01)
+* (arteck) Herdsman 2.1.9, Converters 20.58.0
+* (asgothian) Fix: Aqara T1M (CL-L02D)
+* (arteck) deleteDeviceStates change to deleteObj
+
+### 1.10.13 (2024-11-10)
+* (arteck) corr icon download bug (axios)
+
+### 1.10.12 (2024-11-03)
+* (asgothian) corr Channel Scan
+
+### 1.10.11 (2024-11-02)
+* BREAKING CHANGE
+*
+*  bugs : ChannelScan is currently not available
+*
+*
+* (lebrinkma) fix linter errors
+* (asgothian) disable map display for deactivated devices
+* (asgothian) new option on map: disable physics interaction
+* (asgothian) new zigbee-herdsman-converters 20.28.0
+* (asgothian) new zigbee-herdsman 2.1.1
+* (asgothian) Allow use of keyless converters (used for TuYa and compatible devices in zigbee-herdsman-converters
+* (arteck) swap from request to axios
+* (arteck) delete groups works again
+
+### 1.10.9 (2024-09-05)
+* (arteck) typo admin settings
+* (arteck) eslint config
 
-### 1.9.6 (2024-01-01)
-* (arteck) corr ikea bug 
-* (crckmc) trv child lock works
+### 1.10.8 (2024-09-05)
+* (arteck) corr admin settings
+* (arteck) add new eslint version
 
-### 1.9.5 (2023-12-29)
-* (arteck) update dependency
-* (arteck) min node 18.x.
+### 1.10.7 (2024-09-05)
+* (arteck) add flow control option
+* (asgothian) add new NewHerdsman
+* (arteck) add new ezsp coordinator Firmware (7.4.1.0)
 
-### 1.9.4 (2023-12-29)
-* (arteck) typo
+### 1.10.5 (2024-06-21)
+* (arteck) icon ota device update
+* (arteck) icon fix
 
-### 1.9.3 (2023-12-26)
-* (arteck) last zhc Version 16.x
-* (arteck) corr reboot in statecontroller
+### 1.10.4 (2024-04-20)
+* (arteck) core update
+* (arteck) dependency update
 
-### 1.9.2 (2023-12-25)
-* (arteck) gen states from exposes as function
-* (arteck) rebuild dev_names.json with state cleanup button
+### 1.10.3 (2024-04-06)
+* (arteck) dependency update
 
-### 1.9.1 (2023-12-23)
-* (arteck) corr TypeError: Cannot read properties of undefined (reading 'state')
+### 1.10.2 (2024-01-25)
+* (arteck) dependency update
 
-### 1.9.0 (2023-12-22)
-* (arteck) up to new zhc
-* (arteck) update dependency
+### 1.10.1 (2024-01-21)
+* (arteck) Baudrate is now configurable. works ONLY with Deconz/Conbee(38400)
+* (arteck) add nvbackup.json delete button
 
-### 1.8.27 (2023-12-22)
-* (arteck) update dependency
+### 1.10.0 (2024-01-13)
+* (arteck) new zigbee-herdsman-converters 18.x
+* (arteck) configure message is now a warning
 
-### 1.8.26 (2023-12-22)
-* (arteck) corr toZigbee message
-* (arteck) add deviceManager
-
-### 1.8.25 (2023-12-17)
-* zhc 16.x 
-* (arteck) corr group from exclude dialog
-
-### 1.8.24 (2023-09-05)
-* (arteck) switch to exposes tab for some Aqara Devices [more infos](https://github.com/ioBroker/ioBroker.zigbee/wiki/Exposes-for-device-integration)
-
-### 1.8.23 (2023-08-10)
-* (arteck) query from xiaomi is now better
-
-### 1.8.22 (2023-08-05)
-* (arteck) crash when meta is empty
-
-### 1.8.21 (2023-07-31)
-* (arteck) no converter found
-
-### 1.8.20 (2023-07-31)
-* (arteck) add log
-
-### 1.8.19 (2023-07-31)
-* (arteck) fix occupancy_timeout
-* (arteck) fix battery percentage and voltage
-
-### 1.8.18 (2023-07-16)
-* (arteck) little fix sentry and error log
-
-### 1.8.17 (2023-07-15)
-* (arteck) sentry corr
-
-### 1.8.16 (2023-07-11)
-* (arteck) battery corr
-
-### 1.8.15 (2023-07-11)
-* (arteck) corr battery status
-
-### 1.8.13 (2023-07-09)
-* (arteck) ota corr
-* (arteck) devices are wrong with enum exposes
-* (arteck) select field for groups is larger 
-* (kirovilya) tuya.whitelabel corr
-
-### 1.8.12 (2023-06-30)
-* (arteck) new Documentation (thx Stefan)
-
-### 1.8.11 (2022-12-10)
-* (arteck) fix compsite exposes with list
-
-### 1.8.10 (2022-12-12)
-* (asgothian) fix group access
-* (asgothian) add option for pairing code:
-   A new icon allows to open the network after first entering a pairing code
-   listed on the device
-* (asgothian) easier use of external converters
-   - external converters can now be placed in the zigbee adapter data folder
-   - no absolite path is required to access them
-   - external converters posted on the github for zigbee-herdsman-converters
-     should work as they are - folders for libraries are rewritten to match
-     the expected location when 'required' from within the zigbee adapter
-   - Log entries will identify which files are entered as converters. Errors
-     in these files should not cause the adapter to crash - instead, use of
-     external converters may be unavailable.
-
-### 1.8.9 (2022-12-10)
-* (arteck) fix lidl plug
-
-### 1.8.7 (2022-12-01)
-* (arteck) fix exposes
-
-### 1.8.5 (2022-11-30)
-* (arteck) fix for new code
-
-### 1.8.3 (2022-11-30)
-* (arteck) back to old source
-
-### 1.8.1 (2022-11-28)
-* (bluefox) Packages updated
-* (bluefox) Added names of serial ports in configuration dialog
-
-### 1.7.7 (2022-11-24)
-* dep update
-
-### 1.7.6 (2022-07-23)
-* (kirovilya) fix selecting nodes in admin
-* (arteck) ikea fix
-
-### 1.7.5 (2022-06-01)
-* (arteck) error message for undefined devices or icons
-
-### 1.7.4 (2022-05-30)
-* (arteck) missing icons with multiple description
-
-### 1.7.2 (2022-05-28)
-* (arteck) download missing icons corr
-
-### 1.7.1 (2022-05-28)
-* (arteck) available status in admin is colored
-* (arteck) disable Backups checkbox in settings
-* (arteck) we keep last 10 backup files
-* (arteck) download missing icons automatically (manual upload needed)
-
-### 1.6.18 (2022-04-21)
-* (arteck) fix pairing modus
-
-### 1.6.17 (2022-04)
- rollback
-
-### 1.6.16 (2022-02-16)
-* (arteck) admin dep fix
-* (arteck) colored objects for online/offline state
-
-### 1.6.15 (2022-02-08)
-* (arteck) Battery status % calculation was changed for xiaomi devices
-
-### 1.6.14 (2022-01)
-* (asgothian) OTA limitation
-  - devices with the available state set to false are excluded from OTA updates (and the update check)
-  - devices with link_quality 0 are excluded from OTA updates (and the update check)
-* (asgothian) Device deactivation:
-  - Devices can be marked inactive from the device card.
-  - inactive devices are not pinged
-  - state changes by the user are not sent to inactive devices.
-  - when a pingable device is marked active (from being inactive) it will be pinged again.
-  - inactive devices are excluded from OTA updates.
-* (asgothian) Group rework part 2:
-  - state device.groups will now be deleted with state Cleanup
-  - state info.groups is now obsolete and will be deleted at adapter start (after transferring data to
-    the new storage)
-* (asgothian) Device name persistance.
-  - Changes to device names made within the zigbee adapter are stored in the file dev_names.json. This file
-    is not deleted when the adapter is removed, and will be referenced when a device is added to the zigbee adapter. Deleting and reinstalling the adapter will no longer remove custom device names, nor will deleting and adding the device anew.
-* (asgothian) Readme edit to reflect the current information on zigbee coordinator hardware.
-* (arteck) Zigbee-Herdsman 0.14.4, Zigbee-Herdsman-Converters 14.0.394
-
-### 1.6.13 (2022-01)
-
-* (kirovilya) update to Zigbee-Herdsman 0.14
-
-### 1.6.12 (2022-01)
-* (asgothian) Groups were newly revised (read [here](https://github.com/ioBroker/ioBroker.zigbee/pull/1327) )
-   -  object device.groups is obsolet..the old one is no longer up to date
-
-### 1.6.9 (2021-12)
-* (simatec) fix admin Dark-Mode
-* (asgothian) Expose Access Handling
-* (arteck) translations
-* (asgothian) fix groups
-* (agross) use different normalization rules
-
-### 1.6.1 (2021-08)
-* (kirovilya) herdsman compatibility
-
-### 1.6.0 (2021-08-09)
-
-### 1.5.6 (2021-05-26)
-* (kirovilya) new UI add
-
-### 1.5.5 (2021-05-05)
-* Fixes for new zigbee-herdsman-converters
-* UI fixes
-
-### 1.5.3 (2021-04-30)
-* (arteck) Fix for js-controller 3.3.*
-
-### 1.5.2 (2021-04-29)
-* (asgothian) Groups on dashboard
-
-### 1.5.1 (2021-04-14)
-* (kirovilya) Dashboard
-* (asgothian) Groups (reworked)
-* [Experimental support EZSP protocol for EFR32 chips](https://github.com/Koenkk/zigbee-herdsman/issues/319) (zigbee-herdsman)
-
-### 1.4.4 (2021-02-14)
-* (kirovilya) External converters https://www.zigbee2mqtt.io/information/configuration.html#external-converters-configuration
-* (asgothian) Enhancement ping process
-* (asgothian) Devive query state-button
-* (asgothian) State Cleanup button
-* (arteck) Setting to use exposes instead of internal device description
-
-### 1.4.1 (2020-12)
-* (o0shojo0o) added a kelvin possibility into colortemp
-* (asgothian) Hue_calibration for exposed devices (Use requires PR on zigbee-herdsman-converters, PR is being worked on)
-* (asgothian) fix Tuya Thermostat: restore lost property "preset"
-* (asgothian) Change for Device Availability: Stagger initial ping by 200 ms to prevent network congestion due to a large number of ping requests
-* (asgothian) Change for Device Availability: Ping request triggered on reconnect. Before the herdsman Ping function is used, the adapter attempts to read the "state" dp. If this is successful, no ping is sent and the state is set
-* (asgothian) Change for Device Availability: Set link Quality to 0 when a device is not connected, 10 when it is reconnecting.
-* (asgothian) fix for message "illegal properties x,y" - remove color and color_temp from readable states on device available again (Issue #607)
-* (asgothian) RGB Color can now be entered as "named" color. Implemented names are taken from the list of extended web colors on wikipedia (https://en.wikipedia.org/wiki/Web_colors)
-* (asgothian) change in how RGB color is parsed. Incomplete colors will now be parsed successfully. #FFF will result in R 0, G 15, B 255
-* (asgothian) change in OTA: Message that a device does not respond for OTA query downgraded to "info" from "error"
-* (asgothian) new coordinator card
-
-### 1.4.0 (2020-12)
-* Many new devices available
-
-Starting from version 1.4.0, new devices in iobroker.zigbee will be added automatically, based on the *exposes* described in zigbee-herdsman-converters.
-The *exposes* section describes the device's capabilities, events and control commands. In iobroker.zigbee these descriptions are converted to iobroker states.
-This means that the new device is described correctly enough in zigbee-herdsman-converters to start working with iobroker.zigbee (do not need to add it to our /lib/devices files.js and /lib/states.js).
-
-The only thing that is not described (yet, it may change in the future) in zigbee-herdsman-converters is the device image. This is why the device icon on network map uses external links to the resource https://www.zigbee2mqtt.io/images/devices/*.
-If you want to use local images, then you need to put the image file in /admin/img and briefly describe the device in the /lib/devices.js file without the *states*:
-```
-{
-    models: [‘01MINIZB’],
-    icon: 'img/ITEAD01ZBMINI. png',
-}
-```
-in this case, the *states* attribute will be formed based on the *exposes* description and the image will be local.
-
-### 1.3.1 (2020-10-30)
-* [Experimental Zigate support](https://github.com/Koenkk/zigbee-herdsman/issues/242) (zigbee-herdsman)
-* New devices by:
-    asgothian, arteck, kirovilya, PaulchenPlump
-
-### 1.3.0 (2020-10-07)
-* More stable (zigbee-herdsman)
-* Backup prior database and nv-data (for z-stack 3) before start adapter
-* Allow to select bind cluster
-* Admin Tab support (experimental)
-* (UncleSamSwiss, DutchmanNL) Translation
-* New devices by:
-    arteck, kirovilya, Shade, krumbholz, fre, Alex18081, ae, asgothian,
-    Strunzdesign, kairauer, VLGorskij, Hesse-Bub, PaulchenPlump, blackrozes
-
-### 1.2.1 (2020-08-16)
-* Fixes after changing device identify method
-* (Garfonso) Allow to unbind from coordinator
-
-### 1.2.0 (2020-08-09)
-* Serialport 9.0.0. (zigbee-herdsman)
-* Drop support Node < 10 (zigbee-herdsman)
-* Device now identify (for zigbee-herdsman-converters) by model not zigbeeModel
-
-Improvements and fixes:
-* (Strunzdesign) Fixed the mapping between bulb levels and adapter levels
-* (kirovilya) Fix ota for unavailable devices
-* (kirovilya) Lazy states - created only when an event arrives
-* (kirovilya) States generator - states are created depending on the device and its endpoints
-* (Shade) Fixed WXKG11LM clicks
-* (allofmex) Improved DeveloperTab logs
-* (allofmex) Add humidity and temperature calibration state to Tuya RH3052
-* (kirovilya) Fixed a typo due to which extPanID was not set
-* (allofmex) Retry reconnect gateway all the time for tcp connected gateway
-* (kirovilya) Allow to collect zigbee-herdsman logs to iobroker logs
-* (kirovilya) Additional states for QBKG12LM
-
-New devices:
-* (kirovilya) BlitzWolf BW-IS3, Paulmann 500.67, Paulmann 798.09
-* (kirovilya) DiY Geiger counter https://modkam.ru/?p=1591
-* (kirovilya) DiY 8 Relays + 8 switches https://modkam.ru/?p=1638
-* (kirovilya) DiY Freepad https://github.com/diyruz/freepad
-* (kirovilya) Neo Zigbee Siren Alarm https://szneo.com/en/products/show.php?id=241
-* (Shade) RB 278 T
-* (arteck) TS0601_thermostat
-* (arteck) TS0121
-* (arteck) GL-D-004Z
-* (Shade) WXKG07LM
-* (drohne200) 1746430P7
-* (sebastian) 4058075816459
-* (itProfi) SGMHM-I1
-* (arteck) owvfni3
-* (arteck) TS0001, TS0111
-* (Daniel Dreier) Paulmann 500.45
-* (arteck) ZK-EU-2U
-* (Newan) Busch-Jaeger 6735/6736/6737
-* (andrico21) ZM-L03E-Z
-* (arteck) 915005106701, 9290018187B
-* (frankjoke) HGZB-20-UK, GL-W-001Z
-* (arteck) 4034031P7, 3435011P7
-* (arteck) TS0041
-* (agross) 5062231P7, 5062431P7
-* (kirovilya) TI0001-switch, TI0001-socket
-* (arteck) RB 178 T
-* (arteck) HGZB-07A, AV2010/22, AV2010/22A, TS0041, TS0043
-* (nbars) E1744
-* (Florian Look) GS361A-H04
-* (arteck) ICZB-IW11SW
-* (kirovilya) HS2WD-E
-* (Sacred-Shadow) FL 130 C
-* (arteck) HS3SA, 9290022169, 4096730U7, AC10787, SP 220, SP 222, SP 224, 07004D, BW-IS2, InstaRemote
-* (kirovilya) MCLH-08, MCLH-05
-* (Sacred-Shadow) 1746130P7
-* (mar565) GUNNARP panel round
-* (Erdnuss3003) 4090531P7
-
-### 1.1.1 (2020-04-17)
-* (kirovilya) Critical. Fixed error starting adapter if cc-chip was only flashed
-* (kirovilya) Nue/3A FNB56-ZSW02LX2.0
-* (Strunzdesign) Added missing raw button events for Philips Hue Smart Button ROM001
-* (Sacred-Shadow) Fix Color for Outdoor Lantern W RGBW OSRAM
-
-### 1.1.0 (2020-04-12)
-new Zigbee-herdsman features:
-* ConBee/RaspBee (experimental support) https://github.com/Koenkk/zigbee-herdsman/issues/72
-* OTA update for some devices (IKEA, OSRAM and other) https://github.com/Koenkk/zigbee2mqtt/issues/2921
-* Touchlink reset and join https://github.com/Koenkk/zigbee2mqtt/issues/2396
-* Green Power devices support https://github.com/Koenkk/zigbee2mqtt/issues/3322
-* (peterfido) iCasa KPD14S und KPD18S hinzu
-* (kirovilya) Moes Zigbee Thermostatic Radiator
-* (kirovilya) LifeControl power plug MCLH-03, bulb MCLH-02, water leak MCLH-07, door sensor MCLH-04
-* (kirovilya) Philips LCT002, LCT011, LTW015, LWG004
-* (kirovilya) Gledopto GL-C-007 with with channel
-* (MultivitaminJuice) Iluminize 511.040
-* (Sacred-Shadow) Bitron 902010/24
-* (kirovilya) Color indication of LQI and Battery icon
-* (kirovilya) Device info modal dialog
-* (arteck) Philips LCT026
-* (obakuhl) Improvements Osram switch mini
-* (arteck) Nue / 3A FB56+ZSW1GKJ2.5, LXN-1S27LX1.0
-* (agross) Philips Signe Floor and Table
-* (arteck) TRADFRI bulb E14 WS 470lm, OSRAM PAR16 TW Z3
-* (kirovilya) Smart remote controller (4 buttons)
-* (allofmex) OTA updates
-* (kirovilya) Aqara opple change mode keys (for binding)
-* (palsch) Heiman HS2WD-E siren
-
-### 1.0.4 (2020-03-14)
-* (kirovilya) Philips Hue Adore Bathroom Mirror Light
-* (kirovilya) Oujiabao Gas and carbon monoxide alarm
-* (kirovilya) Tuya SOS button
-* (Erdnuss3003) Schwaiger ZBT-DIMLight-GLS0800
-* (arteck) Smart Home Pty FB56-ZCW11HG1.4, LXT56-LS27LX1.7
-* (arteck) Xiaomi plug lumi.plug.mmeu01
-* (arteck) Innr RS 228 T, RS 230 C
-* (arteck) Gledopto GL-MC-001, GL-D-003ZS
-* (allmyjoes) Bitron AV2010/21A
-* (arteck) Osram Panel TW 595 UGR22
-* (kirovilya) IKEA SURTE door WS 38x64
-* (andigandi) Philips Hue LCG002, Hue LTG002
-* (arteck) iCasa ICZB-FC
-* (arteck) Osram A60 DIM Z3
-* (arteck) Paulmann 371000001
-* (DaCHRIS) Osram PAR16 DIM Z3
-* (DaCHRIS) Philips LWG001
-* (DaCHRIS) Illuminize 511.202
-* (SchumyHao) TERNCY-SD01 knob dimmer
-* (SchumyHao) Xiaomi lumi.lock.aq1
-* (kirovilya) New eWeLink devices: button, TH sensor, contact sensor, motion sensor
-* (kirovilya) Allow pairing to routers (again)
-* (Erdnuss3003) Philips Hue LCT021
-* (root) Trust ZWLD-100 water leak sensor
-* (smartpran) Bitron AV2010/32
-
-### 1.0.3 (2020-02-09)
-* (Tw1nh34d) Hornbach FLAIR LED
-* (asgothian) Hue smart button, Heiman smoke sensor
-* (kirovilya) Philips LTC014, LTC015
-* (kirovilya) Power states for QBKG11LM
-* (Garfonso) Change role for occupancy state to 'sensor.motion'
-* (kirovilya) Change illuminance state to illuminance_lux (for lux value)
-* (arteck) Philips LCF002
-* (arteck) TRADFRI open/close remote
-* (kirovilya) Tuya sensor TS0201
-
-### 1.0.2 (2020-01-29)
-* (kirovilya) All button events for Aqara Opple switch
-* (ma-john) OSRAM PAR16 RGBW Z3
-* (arteck) Phillips LWA004
-* (MiniMe6666) Heiman SmokeSendor-N-3.0
-* (kirovilya) Force remove device
-* (kirovilya) Fix some networkmap bugs
-* (kirovilya) Extended info button
-* (kirovilya) Long press for WXKG01LM
-
-### 1.0.1 (2020-01-23)
-* fix for old z-stack firmware
+ ***********************************************
 
 ### 1.0.0 (2020-01-22)
 * Powered by new [zigbee-herdsman](https://github.com/Koenkk/zigbee-herdsman) library and new [converters database](https://github.com/Koenkk/zigbee-herdsman-converters)
@@ -544,10 +298,13 @@ new Zigbee-herdsman features:
 * Some design update
 * Binding
 
+
+------------------------------------------------------------------------------
+
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2018-2024 Kirov Ilya <kirovilya@gmail.com>
+Copyright (c) 2018-2025 Kirov Ilya <kirovilya@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
