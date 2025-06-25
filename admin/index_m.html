@@ -682,7 +682,7 @@
                         <a id="show_errors_btn" class="btn-floating waves-effect waves-light red tooltipped center-align hoverable translateT hide" title="Show Errors">
                         <i class="material-icons large icon-blue">feedback</i></a>
                     </li>
-    
+                    
                 </ul>
             </div>
             <div class="nav-content">
@@ -692,6 +692,7 @@
                     <!--<li class="tab col s2"><a href="#tab-map" id="tabmap" class="translate tooltipped">Network map</a></li> -->
                     <!--<li class="tab col s1"><a href="#tab-binding" class="translate tooltipped">Binding</a></li> -->
                     <li class="tab col s2"><a href="#tab-exclude" class="translate tooltipped">Local Overrides</a></li>
+                    <!--<li class="tab col s2"><a href="#tab-main" id="devs" class="translate tooltipped">Devices</a></li> -->
                     <li class="tab col s2"><a href="#tab-dev" id="develop" class="translate tooltipped">Developer</a>
                     <li class="tab col s2"><a href="#tab-debug" id="tabdebug" class="translate">Debug</a></li>
                     </li>
@@ -700,60 +701,7 @@
         </nav>
     </div>
     <div id="tabs" class="tabs-content row">
-        <div id="tab-main" class="col s12 page active">
-            <div class="navbar-fixed" style="height: 36px;">
-                <nav style="height: 36px; margin-left: -12px; line-height: 24px; width: calc(100% + 24px);">
-                    <ul id="nav-mobile" class="left">
-                        <li>
-                            <a id="rotate_btn"
-                               class="btn-floating waves-effect waves-light blue tooltipped center-align hoverable translateT"
-                               title="Rotate cards">
-                                <i class="material-icons large icon-blue">3d_rotation</i>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="col main-toolbar-table-types-tools main-toolbar-table-filter input-field"
-                                 style="line-height: 24px;">
-                                <i class="material-icons prefix" style="line-height: 24px;">search</i>
-                                <input id="device-search" class="filter-input translateP" placeholder="Искать"
-                                       autocomplete="new-password" readonly="readonly"
-                                       onfocus="if (this.hasAttribute('readonly')) {this.removeAttribute('readonly'); this.blur(); this.focus();}"
-                                       data-lang-placeholder="Filter">
-                                <a class="filter-clear btn-floating btn-very-small translateT red lighten-3"
-                                   title="Очистить" data-lang-title="clear" style="display: none;"><i
-                                        class="material-icons">clear</i></a>
-                            </div>
-
-                        </li>
-                        <li>
-                            <div class="col input-field" style="line-height: 24px;">
-                                <i class="material-icons left" style="line-height: 24px; margin-top: 5px;">sort</i>
-                                <a id="device-order-btn" class="dropdown-trigger btn" href="#"
-                                   data-target="device-order">Default</a>
-                                <ul id="device-order" class="dropdown-content" tabindex="0">
-                                    <li class="device-order-item" data-type="a-z" tabindex="0"><a class="translate"
-                                                                                                  data-lang="A-Z">A-Z</a>
-                                    </li>
-                                    <li class="device-order-item" data-type="default" tabindex="0"><a class="translate"
-                                                                                                      data-lang="Default">Default</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col input-field" style="line-height: 24px;">
-                                <i class="material-icons left" style="line-height: 24px; margin-top: 5px;">art_track</i>
-                                <a id="room-filter-btn" class="dropdown-trigger btn" href="#" data-target="room-filter">All</a>
-                                <ul id="room-filter" class="dropdown-content" tabindex="0">
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div id="devices" class="row">
-            </div>
-        </div>
+      
         <div id="tab-map" class="col s12 page">
             <div class="fixed-action-btn" style="margin-bottom: 100px">
                 <a id="refresh"
@@ -1138,14 +1086,14 @@
                 </div>
             </div>
         </div>
-        <div id="tab-groups" class="col s12 page">
+        <!--<div id="tab-groups" class="col s12 page">
             <div class="row">
                 <div class="col s12">
                     <div class="col s12">
                         <table class="">
                             <thead>
                             <tr>
-                                <th data-name="num" class="translate">№</th>
+                                <th data-name="num" class="translate">?</th>
                                 <th data-name="name" class="translate">Name</th>
                             </tr>
                             </thead>
@@ -1159,7 +1107,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div id="tab-binding" class="col s12 page">
             <div class="fixed-action-btn" style="margin-bottom: 100px">
                 <a id="add_binding"
@@ -1189,189 +1137,7 @@
 </div>
 
 <div class="materialize-dialogs m">
-    <div id="modaledit" class="modal">
-        <div class="modal-content">
-            <h3 class="translate">Rename / Group device</h3>
-            <div class="row">
-                <div class="col1">
-                    <div class="input-field">
-                        <input id="d_name" type="text" class="value validate">
-                        <label for="d_name" class="translate">Name</label>
-                    </div>
-                </div>
-            </div>
-            <div class="groups_available">
-            <div class="row">
-              <h6>Groups</h6>
-            </div>
-              <div class="row epid0">
-                  <div class="col">
-                      <div class=endpointid>
-                          <p class="translate device_with_endpoint">Main Endpoint</p>
-                      </div>
-                  </div>
-                  <div class="col1">
-                      <div class="input-field groups">
-                          <select id="d_groups_ep0" class="materialSelect" multiple>
-                              <option value="1">select</option>
-                          </select>
-                          <label for="d_groups_ep0" class="translate">Groups</label>
-                      </div>
-                  </div>
-              </div>
-              <div class="row epid1">
-                  <div class="col epid">
-                      <div class=endpointid>
-                          <p class="translate device_with_endpoint">Sub Endpoint 1</p>
-                      </div>
-                  </div>
-                  <div class="col">
-                      <div class="input-field groups">
-                          <select id="d_groups_ep1" class="materialSelect" multiple>
-                              <option value="1">select</option>
-                          </select>
-                          <label for="d_groups_ep1" class="translate">Groups</label>
-                      </div>
-                  </div>
-              </div>
-              <div class="row epid2">
-                  <div class="col epid">
-                      <div class=endpointid>
-                          <p class="translate device_with_endpoint">Sub Endpoint 2</p>
-                      </div>
-                  </div>
-                  <div class="col">
-                      <div class="input-field groups">
-                          <select id="d_groups_ep2" class="materialSelect" multiple>
-                              <option value="1">select</option>
-                          </select>
-                          <label for="d_groups_ep2" class="translate">Groups</label>
-                      </div>
-                  </div>
-              </div>
-              <div class="row epid3">
-                  <div class="col epid">
-                      <div class=endpointid>
-                          <p class="translate device_with_endpoint">Sub Endpoint 3</p>
-                      </div>
-                  </div>
-                  <div class="col">
-                      <div class="input-field groups">
-                          <select id="d_groups_ep3" class="materialSelect" multiple>
-                              <option value="1">select</option>
-                          </select>
-                          <label for="d_groups_ep3" class="translate">Groups</label>
-                      </div>
-                  </div>
-              </div>
-              <div class="row epid4">
-                  <div class="col epid">
-                      <div class=endpointid>
-                          <p class="translate device_with_endpoint">Sub Endpoint 4</p>
-                      </div>
-                  </div>
-                  <div class="col">
-                      <div class="input-field groups">
-                          <select id="d_groups_ep4" class="materialSelect" multiple>
-                              <option value="1">select</option>
-                          </select>
-                          <label for="d_groups_ep4" class="translate">Groups</label>
-                      </div>
-                  </div>
-              </div>
-              <div class="row epid5">
-                  <div class="col epid">
-                      <div class=endpointid>
-                          <p class="translate device_with_endpoint">Sub Endpoint 5</p>
-                      </div>
-                  </div>
-                  <div class="col">
-                      <div class="input-field groups">
-                          <select id="d_groups_ep5" class="materialSelect" multiple>
-                              <option value="1">select</option>
-                          </select>
-                          <label for="d_groups_ep5" class="translate">Groups</label>
-                      </div>
-                  </div>
-              </div>
-              <div class="row epid6">
-              <div class="col epid">
-                  <div class=endpointid>
-                      <p class="translate device_with_endpoint">Sub Endpoint 6</p>
-                  </div>
-              </div>
-              <div class="col">
-                  <div class="input-field groups">
-                      <select id="d_groups_ep6" class="materialSelect" multiple>
-                          <option value="1">select</option>
-                      </select>
-                      <label for="d_groups_ep6" class="translate">Groups</label>
-                      </div>
-                  </div>
-              </div>
-            </div>
-            <div class="options_available">
-              <div class="row">
-                  <h6>Options</h6>
-              </div>
-              <div class="row options">
-
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a name="remove_options" class="waves-effect waves-green btn green translate"><i class="material-icons large">remove_circle</i></a>
-            <a name="add_options" class="waves-effect waves-green btn green translate"><i class="material-icons large">add_circle</i></a>
-            <a name="save" href="#!" class="modal-action modal-close waves-effect waves-green btn green translate">Save</a>
-            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat translate">Cancel</a>
-        </div>
-    </div>
-
-    <div id="groupedit" class="modal">
-        <div class="modal-content">
-            <div class = "editgroup">
-                <h3 class="translate">Edit Group</h3>
-            </div>
-            <div class="row">
-              <div class="col s4 m4 l2 hide">
-                  <div class="input-field groupid">
-                    <input id="g_index" type="number" min="1" class="value validate">
-                    <label for="g_index" class="translate">№</label>
-                  </div>
-                </div>
-                  <div class="input-field col s8 m8 l10">
-                    <input id="g_name" type="text" class="value validate">
-                    <label for="g_name" class="translate">Name</label>
-                </div>
-            </div>
-            <div class="row">
-              <div class="col s12">
-                <div class="input-field members">
-                  <label for="g_members" class="translate">Members</label>
-                  <ul class="collection">
-                      <li class="collection-item">
-                      <label>
-                          <input id="member1" type="checkbox" class="value"/>
-                          <span class="translate" for="member1">Member 1</span>
-                      </label>
-                      </li>
-                      <li class="collection-item">
-                          Member 2
-                          <label>
-                          <input id="globaloverride" type="checkbox" class="value"/>
-                          <span class="translate" for="member2"></span>
-                          </label>
-                      </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a name="save" href="#!" class="modal-action modal-close waves-effect waves-green btn green translate">Save</a>
-            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat translate">Cancel</a>
-        </div>
-    </div>
+    
 
     <div id="chooseimage" class="modal">
         <div class="modal-content">
